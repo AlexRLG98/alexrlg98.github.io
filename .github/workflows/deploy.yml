@@ -1,0 +1,53 @@
+name: Redirect to alexandre-mc.fr
+
+on:
+  push:
+    branches: ['main']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create redirect page
+        run: |
+          mkdir -p redirect
+          cat > redirect/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="fr">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=https://alexandre-mc.fr">
+            <link rel="canonical" href="https://alexandre-mc.fr">
+            <title>Redirection vers alexandre-mc.fr</title>
+          </head>
+          <body>
+            <p>Redirection vers <a href="https://alexandre-mc.fr">alexandre-mc.fr</a>...</p>
+          </body>
+          </html>
+          EOF
+          cp redirect/index.html redirect/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './redirect'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
