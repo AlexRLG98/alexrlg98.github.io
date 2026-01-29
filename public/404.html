@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Alexandre | Portfolio</title>
+    <script>
+      // SPA redirect for GitHub Pages
+      // Stores the current path and redirects to index.html
+      // The app will then restore the route
+      sessionStorage.setItem('redirect', window.location.pathname + window.location.search + window.location.hash);
+      window.location.replace('/');
+    </script>
+  </head>
+  <body>
+    Redirection...
+  </body>
+</html>

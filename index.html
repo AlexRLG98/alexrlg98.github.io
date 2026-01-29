@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EGR2WMC0RW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-EGR2WMC0RW');
+    </script>
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "unfdlux1dx");
+    </script>
+
+    <!-- IP Tracking to Google Sheets -->
+    <script>
+      (async function() {
+        try {
+          const ipRes = await fetch('https://api.ipify.org?format=json');
+          const { ip } = await ipRes.json();
+          const geoRes = await fetch(`https://ipapi.co/${ip}/json/`);
+          const geo = await geoRes.json();
+
+          fetch('https://script.google.com/macros/s/AKfycbz8a468U-sZu_lZNBSKGsmgVeX4Ke9_MIDAIpe19BWu6qoBTznCjNDQtU1ys8JRMNLr/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ip: ip,
+              page: window.location.href,
+              userAgent: navigator.userAgent,
+              location: `${geo.city || ''}, ${geo.region || ''}, ${geo.country_name || ''}`
+            })
+          });
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Alexandre's Portfolio - Full-Stack Developer & Security Researcher. TEK3 student at Epitech Nice, specialized in cybersecurity, CTF, React, Python and systems." />
+    <meta name="keywords" content="developer, full-stack, security, cybersecurity, CTF, python, react, typescript, epitech, portfolio, monaco, nice" />
+    <meta name="author" content="Alexandre Raconnat Le Goff" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alexandre-mc.fr/" />
+    <meta property="og:title" content="Alexandre | Full-Stack Developer & Security Researcher" />
+    <meta property="og:description" content="Portfolio d'Alexandre - Développeur Full-Stack & Security Researcher. Étudiant TEK3 à Epitech Nice. CTF, React, Python, Cybersécurité." />
+    <meta property="og:image" content="https://alexandre-mc.fr/og-image.jpg" />
+    <meta property="og:site_name" content="Alexandre Portfolio" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://alexandre-mc.fr/" />
+    <meta name="twitter:title" content="Alexandre | Full-Stack Developer & Security Researcher" />
+    <meta name="twitter:description" content="Portfolio - Développeur Full-Stack & Security Researcher. CTF, React, Python, Cybersécurité." />
+    <meta name="twitter:image" content="https://alexandre-mc.fr/og-image.jpg" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://alexandre-mc.fr/" />
+
+    <title>Alexandre | Full-Stack Developer & Security Researcher</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // SPA redirect handler for GitHub Pages
+      (function() {
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.history.replaceState(null, '', redirect);
+        }
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
