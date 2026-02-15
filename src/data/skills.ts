@@ -19,10 +19,13 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       { name: 'C/C++', level: 90, category: 'lang' },
       { name: 'Python', level: 75, category: 'lang' },
-      { name: 'JavaScript', level: 70, category: 'lang' },
-      { name: 'Shell/Bash', level: 65, category: 'lang' },
-      { name: 'TypeScript', level: 60, category: 'lang' },
-      { name: 'SQL', level: 65, category: 'lang' },
+      { name: 'Go', level: 70, category: 'lang' },
+      { name: 'Rust', level: 65, category: 'lang' },
+      { name: 'TypeScript', level: 65, category: 'lang' },
+      { name: 'JavaScript', level: 65, category: 'lang' },
+      { name: 'PHP', level: 60, category: 'lang' },
+      { name: 'Shell/Bash', level: 60, category: 'lang' },
+      { name: 'SQL', level: 60, category: 'lang' },
     ]
   },
   {
@@ -176,18 +179,20 @@ export const timeline: TimelineEntry[] = [
     },
     work: [
       {
-        title: { fr: 'Stage Cybersécurité', en: 'Cybersecurity Internship' },
-        company: { fr: 'En recherche', en: 'Searching' },
+        title: { fr: 'Stagiaire Cybersécurité', en: 'Cybersecurity Intern' },
+        company: 'Monaco Telecom',
+        department: 'SSI',
+        location: 'Monaco',
         type: 'internship',
-        period: { fr: '23 Mars - 23 Juil. 2026', en: 'March 23 - July 23, 2026' },
+        period: { fr: '22 Mars - 22 Juil. 2026', en: 'March 22 - July 22, 2026' },
         duration: { fr: '4 mois', en: '4 months' },
         description: {
-          fr: 'Stage de fin de TEK3 en cybersécurité (pentest, SOC, GRC...).',
-          en: 'End of TEK3 cybersecurity internship (pentest, SOC, GRC...).'
+          fr: "Automatisation du traitement des emails de phishing signalés. État des lieux, formalisation du processus cible, étude de solutions open-source, prototype (POC) et recommandation d'architecture.",
+          en: 'Automating the processing of reported phishing emails. Current state analysis, target process formalization, open-source solution study, prototype (POC) and architecture recommendation.'
         },
-        highlights: [],
-        startDate: '2026-03-23',
-        endDate: '2026-07-23'
+        highlights: ['Email Security', 'SOC', 'Automation', 'Open Source'],
+        startDate: '2026-03-22',
+        endDate: '2026-07-22'
       },
       {
         title: { fr: 'Stagiaire Cybersécurité', en: 'Cybersecurity Intern' },

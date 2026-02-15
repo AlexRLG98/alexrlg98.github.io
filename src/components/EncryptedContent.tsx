@@ -33,7 +33,7 @@ export default function EncryptedContent({
   children,
   onUnlockChange
 }: EncryptedContentProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { isVaultUnlocked, getPassword } = usePasswordVault();
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -118,7 +118,7 @@ export default function EncryptedContent({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           onClick={handleLock}
-          className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white glass rounded-lg transition-colors"
+          className="absolute top-0 right-0 flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white card-surface rounded-lg transition-colors"
         >
           <Unlock size={14} />
           {t('encrypted.lock')}
@@ -135,7 +135,7 @@ export default function EncryptedContent({
       animate={{ opacity: 1, y: 0 }}
       className="flex flex-col items-center justify-center py-16"
     >
-      <div className="glass rounded-2xl p-8 max-w-md w-full text-center">
+      <div className="card-surface rounded-2xl p-8 max-w-md w-full text-center">
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-500/20 flex items-center justify-center">
           <Lock className="text-primary-400" size={32} />
         </div>
@@ -157,12 +157,13 @@ export default function EncryptedContent({
                 setError('');
               }}
               placeholder={t('encrypted.passwordPlaceholder')}
-              className="w-full px-4 py-3 pr-12 bg-dark-300 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
+              className="w-full px-4 py-3 pr-12 bg-surface-300 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+              aria-label={showPassword ? (language === 'fr' ? 'Masquer le mot de passe' : 'Hide password') : (language === 'fr' ? 'Afficher le mot de passe' : 'Show password')}
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>

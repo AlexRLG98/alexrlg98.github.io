@@ -12,6 +12,8 @@ export interface Project {
   highlights: (string | BilingualText)[];
   year: number;
   github?: string;
+  featured?: boolean;
+  metrics?: { label: string | BilingualText; value: string }[];
 }
 
 export const projects: Project[] = [
@@ -19,26 +21,33 @@ export const projects: Project[] = [
     id: 'erpio',
     title: 'Erpio',
     description: {
-      fr: "ERP intelligent pour TPE/PME avec copilote IA intégré : CRM, facturation, stocks, planning et trésorerie dans une interface modulaire sans expertise technique requise.",
-      en: "Smart ERP for small businesses with integrated AI copilot: CRM, invoicing, inventory, planning and treasury in a modular interface requiring no technical expertise."
+      fr: "ERP modulaire pour TPE/PME avec copilote IA prévu. Backend Laravel 12 en architecture hexagonale DDD, multi-tenant PostgreSQL avec Row Level Security. Projet EIP Epitech (équipe de 6).",
+      en: "Modular ERP for small businesses with planned AI copilot. Laravel 12 backend with hexagonal DDD architecture, multi-tenant PostgreSQL with Row Level Security. Epitech EIP project (team of 6)."
     },
     longDescription: {
-      fr: "Projet EIP Epitech. Plateforme centralisant la gestion quotidienne (CRM, devis, facturation, trésorerie, tickets, agenda) avec un copilote IA qui assiste, suggère et exécute les tâches administratives. Architecture hybride SLM/LLM : Small Language Models en local pour 80% des tâches, LLM pour l'analyse complexe. Sécurité MCP (Model Context Protocol) empêchant l'IA d'écrire directement en base.",
-      en: "Epitech EIP project. Platform centralizing daily management (CRM, quotes, invoicing, treasury, tickets, calendar) with an AI copilot that assists, suggests and executes administrative tasks. Hybrid SLM/LLM architecture: local Small Language Models for 80% of tasks, LLM for complex analysis. MCP (Model Context Protocol) security preventing AI from writing directly to the database."
+      fr: "Projet EIP Epitech en cours de développement. Backend Laravel 12 / PHP 8.3 structuré en architecture hexagonale (Domain/Application/Infrastructure) avec DDD : Value Objects validés (SIRET avec algorithme de Luhn, Email), entités immuables, Repository Pattern. Multi-tenant PostgreSQL 16 avec Row Level Security et isolation par tenant. Infrastructure Docker complète (PostgreSQL, Redis, Ollama pour futur SLM). Module Tenant implémenté, 5 modules métier (CRM, Factures, Planning, Stocks, Tickets) et copilote IA (Mistral AI, architecture SLM/LLM) en cours de développement.",
+      en: "Epitech EIP project under active development. Laravel 12 / PHP 8.3 backend structured with hexagonal architecture (Domain/Application/Infrastructure) and DDD: validated Value Objects (SIRET with Luhn algorithm, Email), immutable entities, Repository Pattern. Multi-tenant PostgreSQL 16 with Row Level Security and per-tenant isolation. Complete Docker infrastructure (PostgreSQL, Redis, Ollama for future SLM). Tenant module implemented, 5 business modules (CRM, Invoices, Planning, Inventory, Tickets) and AI copilot (Mistral AI, SLM/LLM architecture) under development."
     },
-    technologies: ['Laravel 12', 'PHP', 'React', 'TypeScript', 'PostgreSQL', 'Mistral AI', 'SLM', 'LLM', 'MCP', 'Docker'],
-    category: 'ai',
+    technologies: ['Laravel 12', 'PHP 8.3', 'PostgreSQL', 'Redis', 'Docker', 'DDD', 'Hexagonal'],
+    category: 'fullstack',
     type: 'academic',
+    featured: true,
+    metrics: [
+      { label: { fr: 'Modules prévus', en: 'Planned modules' }, value: '6' },
+      { label: 'Architecture', value: 'DDD' },
+      { label: 'PostgreSQL', value: 'RLS' },
+      { label: { fr: 'Équipe', en: 'Team' }, value: '6 devs' },
+    ],
     highlights: [
       { fr: '[EN COURS] Projet EIP Epitech - Équipe de 6 développeurs', en: '[ONGOING] Epitech EIP Project - Team of 6 developers' },
-      { fr: 'Copilote IA agentique : interaction par chat et voix, onboarding en 3 min (scan Kbis)', en: 'Agentic AI copilot: chat and voice interaction, 3-min onboarding (Kbis scan)' },
-      { fr: 'Architecture "Sandwich" : SLM (extraction) + Laravel 12 (métier) + LLM Orchestrateur (proactivité)', en: '"Sandwich" architecture: SLM (extraction) + Laravel 12 (business logic) + LLM Orchestrator (proactivity)' },
-      { fr: 'IA proactive multi-modules : croise planning, stocks et finances pour anticiper les besoins', en: 'Proactive multi-module AI: cross-references planning, inventory and finances to anticipate needs' },
-      { fr: 'Sécurité MCP : l\'IA passe par des outils API stricts et typés, jamais d\'écriture directe en BDD', en: 'MCP security: AI uses strict typed API tools, never writes directly to the database' },
-      { fr: 'Modules : CRM, Devis/Factures (OCR + PDF auto), Planning intelligent, Stocks (entrées/sorties auto)', en: 'Modules: CRM, Quotes/Invoices (OCR + auto PDF), Smart Planning, Inventory (auto in/out)' },
-      { fr: 'Multi-tenant avec Row Level Security, infrastructure souveraine (Mistral AI, serveurs FR/EU)', en: 'Multi-tenant with Row Level Security, sovereign infrastructure (Mistral AI, FR/EU servers)' },
-      { fr: 'Rôles adaptés par métier : dirigeant, commercial, technicien, support', en: 'Role-based interfaces: manager, sales, technician, support' },
-      { fr: 'Business model freemium : Gratuit / Pro / Business - Cibles : artisans BTP, restaurateurs, freelances', en: 'Freemium business model: Free / Pro / Business - Targets: construction trades, restaurants, freelancers' }
+      { fr: 'Architecture hexagonale (Domain/Application/Infrastructure) avec DDD strict', en: 'Hexagonal architecture (Domain/Application/Infrastructure) with strict DDD' },
+      { fr: 'Value Objects validés : SIRET (algorithme de Luhn), Email, TenantId (UUID)', en: 'Validated Value Objects: SIRET (Luhn algorithm), Email, TenantId (UUID)' },
+      { fr: 'Multi-tenant PostgreSQL 16 avec Row Level Security et isolation par tenant', en: 'Multi-tenant PostgreSQL 16 with Row Level Security and per-tenant isolation' },
+      { fr: 'Infrastructure Docker : PHP 8.3 FPM, PostgreSQL, Redis, Ollama (Mistral 7B)', en: 'Docker infrastructure: PHP 8.3 FPM, PostgreSQL, Redis, Ollama (Mistral 7B)' },
+      { fr: 'CI/CD Jenkins avec Gitleaks (secret scanning) et SonarCloud', en: 'Jenkins CI/CD with Gitleaks (secret scanning) and SonarCloud' },
+      { fr: 'Module Tenant implémenté avec Repository Pattern et entités immuables', en: 'Tenant module implemented with Repository Pattern and immutable entities' },
+      { fr: '[PRÉVU] Copilote IA : architecture "Sandwich" SLM/LLM avec sécurité MCP', en: '[PLANNED] AI copilot: "Sandwich" SLM/LLM architecture with MCP security' },
+      { fr: '[PRÉVU] 5 modules métier : CRM, Factures (OCR), Planning, Stocks, Tickets', en: '[PLANNED] 5 business modules: CRM, Invoices (OCR), Planning, Inventory, Tickets' }
     ],
     year: 2028
   },
@@ -53,19 +62,26 @@ export const projects: Project[] = [
       fr: "Plateforme permettant de simuler des attaques réelles en production, valider l'efficacité des contrôles de sécurité (EDR, SIEM, Firewall), visualiser la couverture MITRE ATT&CK et automatiser les tests de sécurité de manière continue.",
       en: "Platform for simulating real attacks in production, validating security control effectiveness (EDR, SIEM, Firewall), visualizing MITRE ATT&CK coverage and automating continuous security testing."
     },
-    technologies: ['Go', 'Rust', 'React', 'TypeScript', 'D3.js', 'TailwindCSS', 'SQLite', 'PostgreSQL', 'Docker', 'mTLS', 'WebSocket', 'MITRE ATT&CK'],
+    technologies: ['Go', 'Rust', 'React', 'TypeScript', 'Chart.js', 'TailwindCSS', 'SQLite', 'Docker', 'mTLS', 'WebSocket', 'MITRE ATT&CK'],
     category: 'security',
     type: 'personal',
+    featured: true,
+    metrics: [
+      { label: 'MITRE ATT&CK', value: '296' },
+      { label: { fr: 'Tactiques', en: 'Tactics' }, value: '13' },
+      { label: 'Tests', value: '2400+' },
+      { label: { fr: 'Exécuteurs', en: 'Executors' }, value: '1791' },
+    ],
     highlights: [
       { fr: '[EN COURS] Projet personnel', en: '[ONGOING] Personal project' },
       { fr: 'Architecture hexagonale : Server Go + Agent Rust + Dashboard React', en: 'Hexagonal architecture: Go Server + Rust Agent + React Dashboard' },
-      { fr: 'Agent Rust multi-plateforme (Windows + Linux) avec évasion AV', en: 'Multi-platform Rust agent (Windows + Linux) with AV evasion' },
-      { fr: '294 techniques MITRE ATT&CK couvrant 12 tactiques (de Initial Access à Impact)', en: '294 MITRE ATT&CK techniques covering 12 tactics (from Initial Access to Impact)' },
-      { fr: 'Authentification complète : JWT, 5 rôles (admin/rssi/operator/analyst/viewer), 27 permissions RBAC', en: 'Full authentication: JWT, 5 roles (admin/rssi/operator/analyst/viewer), 27 RBAC permissions' },
+      { fr: 'Agent Rust multi-plateforme (Windows + Linux) avec beaconing et safe mode', en: 'Multi-platform Rust agent (Windows + Linux) with beaconing and safe mode' },
+      { fr: '296 techniques MITRE ATT&CK couvrant 13 tactiques, 1791 exécuteurs (220 safe / 74 unsafe)', en: '296 MITRE ATT&CK techniques covering 13 tactics, 1,791 executors (220 safe / 74 unsafe)' },
+      { fr: 'Authentification JWT avec 3 rôles (Admin, Operator, Viewer), rate limiting et token blacklist', en: 'JWT authentication with 3 roles (Admin, Operator, Viewer), rate limiting and token blacklist' },
       { fr: 'Matrice ATT&CK interactive avec Security Score, analytics et comparaison de périodes', en: 'Interactive ATT&CK matrix with Security Score, analytics and period comparison' },
       { fr: 'Communication sécurisée mTLS + WebSocket temps réel', en: 'Secure mTLS communication + real-time WebSocket' },
       { fr: 'Scheduling automatisé (cron/daily/weekly/monthly) + notifications email/webhook', en: 'Automated scheduling (cron/daily/weekly/monthly) + email/webhook notifications' },
-      { fr: '2400+ tests (95%+ coverage) - ~18,000 lignes de code', en: '2400+ tests (95%+ coverage) - ~18,000 lines of code' },
+      { fr: '2400+ tests (Go + Rust + React) avec couverture complète', en: '2400+ tests (Go + Rust + React) with full coverage' },
       { fr: 'CI/CD complet (Jenkins, SonarCloud, Docker multi-stage, Trivy, SBOM)', en: 'Full CI/CD (Jenkins, SonarCloud, Docker multi-stage, Trivy, SBOM)' },
       { fr: 'Alternative aux solutions BAS enterprise (Pentera, AttackIQ, SafeBreach), comparable à MITRE Caldera avec scoring, analytics et RBAC en plus', en: 'Alternative to enterprise BAS solutions (Pentera, AttackIQ, SafeBreach), comparable to MITRE Caldera with scoring, analytics and RBAC on top' }
     ],
@@ -75,12 +91,12 @@ export const projects: Project[] = [
     id: 'living-world',
     title: 'Living World Ecosystem',
     description: {
-      fr: "Simulateur d'écosystème avancé avec IA, génétique mendélienne et réseaux de neurones individuels pour chaque créature.",
-      en: "Advanced ecosystem simulator with AI, Mendelian genetics and individual neural networks for each creature."
+      fr: "Simulateur d'écosystème où chaque créature possède son propre réseau de neurones (8→4) et un ADN diploïde avec allèles dominants/récessifs, le tout soumis à la sélection naturelle.",
+      en: "Ecosystem simulator where each creature has its own neural network (8→4) and diploid DNA with dominant/recessive alleles, all subject to natural selection."
     },
     longDescription: {
-      fr: "Un simulateur d'écosystème où des créatures évoluent, apprennent et survivent grâce à l'IA et la sélection naturelle. Chaque créature possède son propre réseau de neurones et un ADN diploïde avec allèles dominants/récessifs.",
-      en: "An ecosystem simulator where creatures evolve, learn and survive through AI and natural selection. Each creature has its own neural network and diploid DNA with dominant/recessive alleles."
+      fr: "Simulation multi-agents en Python/Pygame où des créatures naissent, chassent, se reproduisent et meurent dans un monde généré par bruit de Perlin. Chaque individu est doté d'un réseau de neurones personnel (8 capteurs en entrée, 4 sorties comportementales) qui évolue par mutations génétiques. Système climatique avec saisons, coordination de chasse en meute (3-8 créatures) et propagation de maladies/parasites.",
+      en: "Multi-agent simulation in Python/Pygame where creatures are born, hunt, reproduce and die in a Perlin noise-generated world. Each individual has a personal neural network (8 sensor inputs, 4 behavioral outputs) that evolves through genetic mutations. Climate system with seasons, pack hunting coordination (3-8 creatures) and disease/parasite propagation."
     },
     technologies: ['Python', 'Pygame', 'NumPy', 'Neural Networks', 'Genetic Algorithms'],
     category: 'ai',
@@ -104,8 +120,8 @@ export const projects: Project[] = [
       en: "Automated investigation platform for due diligence, AML/CFT compliance and reputation analysis."
     },
     longDescription: {
-      fr: "Outil professionnel combinant scraping LinkedIn, recherche multi-sources et analyse IA avec génération de rapports Word automatique.",
-      en: "Professional tool combining LinkedIn scraping, multi-source research and AI analysis with automatic Word report generation."
+      fr: "API REST FastAPI avec WebSocket temps réel pour le suivi d'avancement. Scraping LinkedIn via Selenium (expériences, éducation, compétences), analyse par LLM local (Ollama) avec algorithme Map-Reduce pour traiter les contextes larges. 5 types d'investigation (AML/CFT, Réputation, Background, Due Diligence, Concurrence) avec génération automatique de rapports Word structurés.",
+      en: "FastAPI REST API with real-time WebSocket for progress tracking. LinkedIn scraping via Selenium (experience, education, skills), analysis by local LLM (Ollama) with Map-Reduce algorithm for large contexts. 5 investigation types (AML/CFT, Reputation, Background, Due Diligence, Competition) with automatic structured Word report generation."
     },
     technologies: ['Python', 'FastAPI', 'Selenium', 'Ollama/LLM', 'SQLite', 'WebSocket'],
     category: 'security',
@@ -129,8 +145,8 @@ export const projects: Project[] = [
       en: '61 security challenges covering 7 categories: Web, Crypto, PWN, Reverse, Forensics, Misc and Steganography.'
     },
     longDescription: {
-      fr: 'Plateforme CTF complète avec scoring dynamique, ~45,000 points totaux, conçue pour des joueurs avancés.',
-      en: 'Complete CTF platform with dynamic scoring, ~45,000 total points, designed for advanced players.'
+      fr: "Plateforme CTF auto-hébergée sur CTFd avec 61 challenges répartis en 7 catégories (Web, Crypto, PWN, Reverse, Forensics, Misc, Stéganographie). Scoring dynamique ajusté au nombre de solves, ~45,000 points totaux. Challenges Web avancés (SQLi, SSTI, SSRF, JWT, Prototype Pollution), crypto (RSA, ECC, attaques lattice) et PWN (buffer overflow, ROP, heap exploitation). Infrastructure Docker complète pour l'isolation des challenges.",
+      en: "Self-hosted CTF platform on CTFd with 61 challenges across 7 categories (Web, Crypto, PWN, Reverse, Forensics, Misc, Steganography). Dynamic scoring adjusted by solve count, ~45,000 total points. Advanced Web challenges (SQLi, SSTI, SSRF, JWT, Prototype Pollution), crypto (RSA, ECC, lattice attacks) and PWN (buffer overflow, ROP, heap exploitation). Complete Docker infrastructure for challenge isolation."
     },
     technologies: ['Python', 'C', 'Docker', 'CTFd', 'Rust', '.NET'],
     category: 'security',
@@ -150,12 +166,12 @@ export const projects: Project[] = [
     id: 'cryptobot',
     title: 'CryptoBot Trading',
     description: {
-      fr: 'Bot de trading crypto automatisé avec stratégie RSI + MACD et dashboard temps réel interactif.',
-      en: 'Automated crypto trading bot with RSI + MACD strategy and interactive real-time dashboard.'
+      fr: 'Bot de trading crypto connecté à l\'API Binance avec stratégie RSI + MACD, dashboard Dash/Plotly temps réel, paper trading et backtesting.',
+      en: 'Crypto trading bot connected to the Binance API with RSI + MACD strategy, real-time Dash/Plotly dashboard, paper trading and backtesting.'
     },
     longDescription: {
-      fr: 'Bot de trading pour Binance avec interface terminal et dashboard web, incluant paper trading et backtesting.',
-      en: 'Trading bot for Binance with terminal interface and web dashboard, including paper trading and backtesting.'
+      fr: "Bot Python automatisant l'analyse et l'exécution d'ordres sur Binance. Stratégie basée sur les indicateurs RSI et MACD avec gestion du risque (stop-loss, take-profit, sizing). Dashboard interactif Dash/Plotly avec graphiques candlestick temps réel et suivi de portfolio. Mode paper trading pour tester sans risque, backtesting sur données historiques via Pandas, et notifications Telegram pour les signaux de trading.",
+      en: "Python bot automating analysis and order execution on Binance. Strategy based on RSI and MACD indicators with risk management (stop-loss, take-profit, sizing). Interactive Dash/Plotly dashboard with real-time candlestick charts and portfolio tracking. Paper trading mode for risk-free testing, historical data backtesting via Pandas, and Telegram notifications for trading signals."
     },
     technologies: ['Python', 'Dash', 'Plotly', 'Pandas', 'Binance API', 'SQLAlchemy'],
     category: 'fintech',
@@ -175,12 +191,12 @@ export const projects: Project[] = [
     id: 'sports-betting',
     title: 'Sports Betting Bot',
     description: {
-      fr: 'Bot de paris sportifs avec scraping Flashscore/Sofascore en temps réel via Playwright.',
-      en: 'Sports betting bot with real-time Flashscore/Sofascore scraping via Playwright.'
+      fr: 'Collecteur de données sportives live via Playwright (Flashscore, Sofascore) avec CLI Typer, conteneurisé Docker et CI/CD GitHub Actions.',
+      en: 'Live sports data collector via Playwright (Flashscore, Sofascore) with Typer CLI, Docker containerization and GitHub Actions CI/CD.'
     },
     longDescription: {
-      fr: 'Système automatisé de collecte de données sportives live avec analyse des cotes et affichage console.',
-      en: 'Automated live sports data collection system with odds analysis and console display.'
+      fr: "Outil CLI Python scrappant en temps réel les scores, statistiques et cotes depuis Flashscore et Sofascore via Playwright (browser headless). Architecture modulaire avec Typer pour les commandes CLI, Poetry pour la gestion des dépendances, Docker pour le déploiement et GitHub Actions pour la CI/CD. Extraction automatisée de données live utilisables pour l'analyse de paris.",
+      en: "Python CLI tool scraping real-time scores, statistics and odds from Flashscore and Sofascore via Playwright (headless browser). Modular architecture with Typer for CLI commands, Poetry for dependency management, Docker for deployment and GitHub Actions for CI/CD. Automated extraction of live data usable for betting analysis."
     },
     technologies: ['Python', 'Playwright', 'Docker', 'GitHub Actions', 'Poetry', 'Typer'],
     category: 'tools',
@@ -190,8 +206,8 @@ export const projects: Project[] = [
       { fr: 'Extraction scores et stats live', en: 'Live scores and stats extraction' },
       { fr: 'CLI avec commandes multiples', en: 'CLI with multiple commands' },
       { fr: 'Conteneurisation Docker', en: 'Docker containerization' },
-      'Pipeline CI/CD GitHub Actions',
-      'Build system Makefile'
+      { fr: 'Pipeline CI/CD GitHub Actions', en: 'GitHub Actions CI/CD pipeline' },
+      { fr: 'Build system Makefile', en: 'Makefile build system' }
     ],
     year: 2025
   },
@@ -199,16 +215,23 @@ export const projects: Project[] = [
     id: 'rtype',
     title: 'R-Type Game Engine',
     description: {
-      fr: 'Jeu multijoueur C++23 (33k+ lignes) avec architecture hexagonale, système graphique multi-backend SDL2/SFML et voice chat temps réel.',
-      en: 'Multiplayer C++23 game (33k+ lines) with hexagonal architecture, multi-backend SDL2/SFML graphics system and real-time voice chat.'
+      fr: 'Jeu multijoueur C++23 (81k+ lignes) avec architecture hexagonale, système graphique multi-backend SDL2/SFML et voice chat temps réel.',
+      en: 'Multiplayer C++23 game (81k+ lines) with hexagonal architecture, multi-backend SDL2/SFML graphics system and real-time voice chat.'
     },
     longDescription: {
-      fr: "Clone du jeu R-Type avec architecture hexagonale (ports & adapters), serveur multi-protocole (TCP:4125 auth TLS + UDP:4124 gameplay 20Hz + UDP:4126 voice chat Opus), plugins graphiques dynamiques (dlopen) et accessibilité (modes daltonien, remapping clavier). CI/CD Jenkins et documentation MkDocs 42 pages.",
-      en: "R-Type game clone with hexagonal architecture (ports & adapters), multi-protocol server (TCP:4125 TLS auth + UDP:4124 gameplay 20Hz + UDP:4126 Opus voice chat), dynamic graphics plugins (dlopen) and accessibility (colorblind modes, key remapping). Jenkins CI/CD and 42-page MkDocs documentation."
+      fr: "Clone du jeu R-Type avec architecture hexagonale (ports & adapters), serveur multi-protocole (TCP:4125 auth TLS + UDP:4124 gameplay 20Hz + UDP:4126 voice chat Opus), plugins graphiques dynamiques (dlopen) et accessibilité (modes daltonien, remapping clavier). Système social complet (lobby, friends, messaging, leaderboard, achievements) avec MongoDB. CI/CD Jenkins et documentation MkDocs (109 fichiers).",
+      en: "R-Type game clone with hexagonal architecture (ports & adapters), multi-protocol server (TCP:4125 TLS auth + UDP:4124 gameplay 20Hz + UDP:4126 Opus voice chat), dynamic graphics plugins (dlopen) and accessibility (colorblind modes, key remapping). Full social system (lobby, friends, messaging, leaderboard, achievements) with MongoDB. Jenkins CI/CD and MkDocs documentation (109 files)."
     },
-    technologies: ['C++23', 'Boost.Asio', 'OpenSSL', 'SFML', 'SDL2', 'PortAudio', 'Opus', 'CMake', 'vcpkg', 'Docker', 'Jenkins', 'MkDocs', 'Google Test', 'spdlog'],
+    technologies: ['C++23', 'Boost.Asio', 'OpenSSL', 'SFML', 'SDL2', 'PortAudio', 'Opus', 'MongoDB', 'CMake', 'vcpkg', 'Docker', 'Jenkins', 'MkDocs', 'Google Test', 'spdlog'],
     category: 'systems',
     type: 'academic',
+    featured: true,
+    metrics: [
+      { label: { fr: 'Lignes de code', en: 'Lines of code' }, value: '81k+' },
+      { label: { fr: 'Protocoles', en: 'Protocols' }, value: '3' },
+      { label: { fr: 'Fichiers doc', en: 'Doc files' }, value: '109' },
+      { label: { fr: 'Plateformes', en: 'Platforms' }, value: '3' },
+    ],
     highlights: [
       { fr: 'Architecture Hexagonale (Domain/Application/Infrastructure) avec ports & adapters', en: 'Hexagonal Architecture (Domain/Application/Infrastructure) with ports & adapters' },
       { fr: 'Serveur multi-protocole : TCP:4125 (auth TLS) + UDP:4124 (gameplay 20Hz) + UDP:4126 (voice)', en: 'Multi-protocol server: TCP:4125 (TLS auth) + UDP:4124 (gameplay 20Hz) + UDP:4126 (voice)' },
@@ -216,10 +239,12 @@ export const projects: Project[] = [
       { fr: 'Voice chat temps réel avec PortAudio + codec Opus (32kbps)', en: 'Real-time voice chat with PortAudio + Opus codec (32kbps)' },
       { fr: 'Accessibilité : modes daltonien (protanopie, deutéranopie, tritanopie), remapping clavier', en: 'Accessibility: colorblind modes (protanopia, deuteranopia, tritanopia), key remapping' },
       { fr: 'Client-Side Prediction pour mouvement fluide malgré la latence', en: 'Client-Side Prediction for smooth movement despite latency' },
-      'Value Objects DDD : Health, Position, Email, Password',
-      { fr: '12 loggers spdlog (6 client + 6 serveur) avec rotation automatique', en: '12 spdlog loggers (6 client + 6 server) with automatic rotation' },
+      { fr: 'Value Objects DDD : Health, Position, Email, Password', en: 'DDD Value Objects: Health, Position, Email, Password' },
+      { fr: '11 loggers spdlog (7 client + 4 serveur) avec rotation automatique', en: '11 spdlog loggers (7 client + 4 server) with automatic rotation' },
       { fr: 'CI/CD Jenkins avec artifacts cross-platform (Linux/Windows/macOS)', en: 'Jenkins CI/CD with cross-platform artifacts (Linux/Windows/macOS)' },
-      { fr: 'Documentation MkDocs Material (42 pages)', en: 'MkDocs Material documentation (42 pages)' },
+      { fr: 'Documentation MkDocs Material (109 fichiers, ~30k lignes)', en: 'MkDocs Material documentation (109 files, ~30k lines)' },
+      { fr: '[BONUS] Système social complet : lobby/rooms, friends, messaging, leaderboard, achievements (MongoDB)', en: '[BONUS] Full social system: lobby/rooms, friends, messaging, leaderboard, achievements (MongoDB)' },
+      { fr: '[BONUS] Discord Bot intégré pour notifications et gestion de serveur', en: '[BONUS] Integrated Discord Bot for notifications and server management' },
       { fr: '[BONUS] Nix Flake pour environnement reproductible', en: '[BONUS] Nix Flake for reproducible environment' }
     ],
     year: 2026,
@@ -243,7 +268,7 @@ export const projects: Project[] = [
       { fr: 'PVS/NegaScout avec Iterative Deepening adaptatif (depth 4→6)', en: 'PVS/NegaScout with adaptive Iterative Deepening (depth 4→6)' },
       { fr: 'Threat Space Search : VCF/VCT pour séquences forcées 25-40 coups', en: 'Threat Space Search: VCF/VCT for 25-40 move forced sequences' },
       { fr: 'Table de transposition 2M entrées (~40MB) avec aging', en: 'Transposition table 2M entries (~40MB) with aging' },
-      'Bitboards 4 rotations : win detection O(4) vs O(400)',
+      { fr: 'Bitboards 4 rotations : détection victoire O(4) vs O(400)', en: 'Bitboards 4 rotations: win detection O(4) vs O(400)' },
       { fr: '65 patterns de menaces (FIVE, OPEN_FOUR, FOUR, OPEN_THREE...)', en: '65 threat patterns (FIVE, OPEN_FOUR, FOUR, OPEN_THREE...)' },
       { fr: 'Move ordering avancé : History Heuristic, Killer Moves, Countermove', en: 'Advanced move ordering: History Heuristic, Killer Moves, Countermove' },
       { fr: 'Pruning : Null Move, Futility, Razoring, LMR logarithmique', en: 'Pruning: Null Move, Futility, Razoring, logarithmic LMR' },
@@ -252,8 +277,8 @@ export const projects: Project[] = [
       { fr: '[BONUS] NNUE Neural Network (128→32→1) quantifié int16/int8', en: '[BONUS] NNUE Neural Network (128→32→1) quantized int16/int8' },
       { fr: '[BONUS] Proof-Number Search pour prouver positions', en: '[BONUS] Proof-Number Search to prove positions' },
       { fr: '[BONUS] Opening Book 1000+ positions avec 8 symétries', en: '[BONUS] Opening Book 1000+ positions with 8 symmetries' },
-      '[BONUS] Discord Bot : 1v1, ranking, replays',
-      '[BONUS] Brawl Toolkit : stats, leaderboard, replay, spy, watch',
+      { fr: '[BONUS] Discord Bot : 1v1, classement, replays', en: '[BONUS] Discord Bot: 1v1, ranking, replays' },
+      { fr: '[BONUS] Brawl Toolkit : stats, classement, replay, spy, watch', en: '[BONUS] Brawl Toolkit: stats, leaderboard, replay, spy, watch' },
       { fr: 'Tests complets : unitaires C++, tactiques Python, stress, tournois', en: 'Complete tests: C++ unit, Python tactical, stress, tournaments' }
     ],
     year: 2026
@@ -296,8 +321,8 @@ export const projects: Project[] = [
       en: 'C++ ray tracing engine with Phong lighting, cast shadows and multi-light support.'
     },
     longDescription: {
-      fr: "Implémentation d'un moteur de rendu par lancer de rayons avec interface IPrimitive, parser libconfig++ et système d'éclairage complet incluant des bonus comme le modèle Phong et les point lights.",
-      en: "Implementation of a ray casting render engine with IPrimitive interface, libconfig++ parser and complete lighting system including bonuses like Phong model and point lights."
+      fr: "Moteur de ray tracing C++17 avec architecture OOP (interface IPrimitive polymorphique). Primitives : sphères, plans et cylindres limités (yMin/yMax). Éclairage complet : lumière directionnelle + ambiante, point lights multiples, modèle de réflexion Phong (spéculaire) et shadow rays pour les ombres portées. Scènes configurables via fichiers .cfg parsés avec libconfig++, export PPM binaire.",
+      en: "C++17 ray tracing engine with OOP architecture (polymorphic IPrimitive interface). Primitives: spheres, planes and limited cylinders (yMin/yMax). Complete lighting: directional + ambient light, multiple point lights, Phong reflection model (specular) and shadow rays for cast shadows. Configurable scenes via .cfg files parsed with libconfig++, binary PPM export."
     },
     technologies: ['C++17', 'libconfig++', 'PPM', 'OOP', 'Makefile'],
     category: 'systems',
@@ -324,8 +349,8 @@ export const projects: Project[] = [
       en: 'Pizzeria simulation with multi-process/thread, load balancing, IPC, Thread Pool and SFML GUI.'
     },
     longDescription: {
-      fr: 'Simulation complète de pizzeria : réception des commandes, cuisines (processus fils), cuisiniers (threads) et gestion des stocks. Architecture avancée de concurrence avec bonus GUI.',
-      en: 'Complete pizzeria simulation: order reception, kitchens (child processes), cooks (threads) and stock management. Advanced concurrency architecture with GUI bonus.'
+      fr: "Simulation multi-process/thread d'une pizzeria en C++17. Chaque cuisine est un processus fils (fork dynamique) contenant un Thread Pool de cuisiniers. Communication réception/cuisines par IPC pipes avec sérialisation custom. Load balancing des commandes, stock d'ingrédients avec régénération automatique, fermeture des cuisines inactives après 5s. Bonus : interface graphique SFML complète.",
+      en: "Multi-process/thread C++17 pizzeria simulation. Each kitchen is a child process (dynamic fork) containing a cook Thread Pool. Reception/kitchen communication via IPC pipes with custom serialization. Order load balancing, ingredient stock with automatic regeneration, inactive kitchen closure after 5s. Bonus: complete SFML GUI."
     },
     technologies: ['C++17', 'Fork/Processes', 'Thread Pool', 'IPC/Pipes', 'SFML', 'Mutex/CondVar'],
     category: 'systems',
@@ -348,12 +373,12 @@ export const projects: Project[] = [
     id: 'solarx',
     title: 'SolarX Monitor',
     description: {
-      fr: 'Système de monitoring solaire avec collecte de données onduleur et dashboard Streamlit.',
-      en: 'Solar monitoring system with inverter data collection and Streamlit dashboard.'
+      fr: 'Monitoring de production solaire : collecte automatisée des données onduleur via cron, stockage SQLite et dashboard Streamlit avec historique et tendances.',
+      en: 'Solar production monitoring: automated inverter data collection via cron, SQLite storage and Streamlit dashboard with history and trends.'
     },
     longDescription: {
-      fr: 'Application IoT de suivi de production solaire avec automatisation cron et visualisation.',
-      en: 'IoT application for solar production tracking with cron automation and visualization.'
+      fr: "Système de monitoring connecté à un onduleur photovoltaïque. Script Python exécuté par cron à intervalles réguliers pour collecter les données de production (puissance, énergie, rendement). Stockage en base SQLite avec historique complet. Dashboard Streamlit interactif permettant de visualiser la production en temps réel, l'historique journalier/mensuel et les tendances de rendement.",
+      en: "Monitoring system connected to a photovoltaic inverter. Python script executed by cron at regular intervals to collect production data (power, energy, yield). SQLite database storage with complete history. Interactive Streamlit dashboard for visualizing real-time production, daily/monthly history and yield trends."
     },
     technologies: ['Python', 'Streamlit', 'SQLite', 'Cron', 'IoT'],
     category: 'tools',
@@ -387,7 +412,7 @@ export const projects: Project[] = [
       { fr: 'Registry Docker privé intégré', en: 'Integrated private Docker registry' },
       { fr: 'Déploiement Kubernetes automatisé', en: 'Automated Kubernetes deployment' },
       { fr: 'Cluster multi-nœuds (k3d)', en: 'Multi-node cluster (k3d)' },
-      'Jenkins Configuration as Code',
+      { fr: 'Jenkins Configuration as Code', en: 'Jenkins Configuration as Code' },
       { fr: 'Déploiement one-command avec Ansible', en: 'One-command deployment with Ansible' }
     ],
     year: 2025
@@ -409,14 +434,14 @@ export const projects: Project[] = [
     highlights: [
       { fr: '8 services intégrés : GitHub, Gmail, Microsoft/Outlook, Slack, Spotify, Twitch, Timer, Weather', en: '8 integrated services: GitHub, Gmail, Microsoft/Outlook, Slack, Spotify, Twitch, Timer, Weather' },
       { fr: '29 actions (triggers) + 19 réactions implémentées', en: '29 actions (triggers) + 19 reactions implemented' },
-      '[BONUS] Visual Flow Builder avec @xyflow/react (drag-and-drop, MiniMap, routing)',
+      { fr: '[BONUS] Visual Flow Builder avec @xyflow/react (drag-and-drop, MiniMap, routing)', en: '[BONUS] Visual Flow Builder with @xyflow/react (drag-and-drop, MiniMap, routing)' },
       { fr: '[BONUS] Mode Flow v2 : chaînage de plusieurs actions/réactions', en: '[BONUS] Flow v2 mode: chaining multiple actions/reactions' },
       { fr: '[BONUS] Encryption AES-256-CBC des tokens OAuth en BDD', en: '[BONUS] AES-256-CBC encryption of OAuth tokens in DB' },
-      'OAuth2 pour 7 providers (Google, GitHub, Slack, Discord, Microsoft, Twitch, Spotify)',
+      { fr: 'OAuth2 pour 7 providers (Google, GitHub, Slack, Discord, Microsoft, Twitch, Spotify)', en: 'OAuth2 for 7 providers (Google, GitHub, Slack, Discord, Microsoft, Twitch, Spotify)' },
       { fr: 'HookManager : polling automatique des actions avec déduplication', en: 'HookManager: automatic action polling with deduplication' },
       { fr: 'App mobile React Native/Expo avec expo-router et APK pré-compilé', en: 'React Native/Expo mobile app with expo-router and pre-compiled APK' },
       { fr: 'Email verification avec tokens sécurisés (bcrypt + JWT)', en: 'Email verification with secure tokens (bcrypt + JWT)' },
-      'Docker Compose : server:8080, client_web:8081, client_mobile (APK), PostgreSQL, Ngrok',
+      { fr: 'Docker Compose : server:8080, client_web:8081, client_mobile (APK), PostgreSQL, Ngrok', en: 'Docker Compose: server:8080, client_web:8081, client_mobile (APK), PostgreSQL, Ngrok' },
       { fr: 'Endpoint /about.json conforme au PDF du projet', en: 'PDF-compliant /about.json endpoint' },
       { fr: 'Multi-language (i18n) sur le client web', en: 'Multi-language (i18n) on web client' }
     ],
@@ -430,8 +455,8 @@ export const projects: Project[] = [
       en: 'Modular retro gaming platform with dynamic loading (dlopen/dlclose) of graphics libraries and games.'
     },
     longDescription: {
-      fr: "Plateforme de gaming extensible permettant de charger dynamiquement des bibliothèques graphiques (SFML, SDL2, Ncurses) et des jeux sans recompilation.",
-      en: "Extensible gaming platform allowing dynamic loading of graphics libraries (SFML, SDL2, Ncurses) and games without recompilation."
+      fr: "Plateforme de gaming C++17 utilisant dlopen/dlclose pour charger à chaud des bibliothèques graphiques (SFML, SDL2, NCurses) et des jeux (Snake, Minesweeper) sans recompilation. Interfaces partagées IGraphicLib/IGameLib permettant la collaboration inter-groupes. Système de scores persistant, sauvegarde/restauration d'état et hot-swap des renderers à la volée.",
+      en: "C++17 gaming platform using dlopen/dlclose to hot-load graphics libraries (SFML, SDL2, NCurses) and games (Snake, Minesweeper) without recompilation. Shared IGraphicLib/IGameLib interfaces enabling inter-group collaboration. Persistent score system, state save/restore and runtime renderer hot-swapping."
     },
     technologies: ['C++17', 'SFML', 'SDL2', 'NCurses', 'dlopen/dlclose', 'CMake', 'Makefile'],
     category: 'systems',
@@ -458,21 +483,21 @@ export const projects: Project[] = [
       en: 'Digital logic circuit simulator with Tristate state, .nts file parsing and interactive shell.'
     },
     longDescription: {
-      fr: 'Simulateur de circuits électroniques digitaux basé sur la logique booléenne à 3 états (True, False, Undefined). Parsing de circuits depuis fichiers .nts et simulation tick par tick.',
-      en: 'Digital electronic circuit simulator based on 3-state Boolean logic (True, False, Undefined). Circuit parsing from .nts files and tick-by-tick simulation.'
+      fr: "Simulateur de circuits logiques en C++17 avec logique tristate (True/False/Undefined). Architecture Factory Pattern pour instancier les composants : gates élémentaires (AND, OR, XOR, NOT), chipsets 40xx (4001, 4008, 4011, 4030, 4069, 4071, 4081), entrées/sorties et clock. Parser robuste de fichiers .nts, shell interactif tick par tick avec gestion SIGINT. 43 dossiers de tests.",
+      en: "C++17 logic circuit simulator with tristate logic (True/False/Undefined). Factory Pattern architecture for component instantiation: elementary gates (AND, OR, XOR, NOT), 40xx chipsets (4001, 4008, 4011, 4030, 4069, 4071, 4081), inputs/outputs and clock. Robust .nts file parser, interactive tick-by-tick shell with SIGINT handling. 43 test folders."
     },
     technologies: ['C++17', 'OOP', 'Factory Pattern', 'CMake', 'Makefile'],
     category: 'systems',
     type: 'academic',
     highlights: [
       { fr: 'Interface nts::IComponent polymorphique', en: 'Polymorphic nts::IComponent interface' },
-      'Tristate logic (TRUE/FALSE/UNDEFINED)',
-      'Factory pattern avec std::map<string, lambda>',
+      { fr: 'Logique tristate (TRUE/FALSE/UNDEFINED)', en: 'Tristate logic (TRUE/FALSE/UNDEFINED)' },
+      { fr: 'Factory pattern avec std::map<string, lambda>', en: 'Factory pattern with std::map<string, lambda>' },
       { fr: 'AbstractChipset avec gestion automatique des pins', en: 'AbstractChipset with automatic pin management' },
-      'LogicGates helpers (applyAnd, applyOr, applyNand, applyNor)',
+      { fr: 'Helpers LogicGates (applyAnd, applyOr, applyNand, applyNor)', en: 'LogicGates helpers (applyAnd, applyOr, applyNand, applyNor)' },
       { fr: 'Composants spéciaux : input, output, clock, true, false', en: 'Special components: input, output, clock, true, false' },
       { fr: 'Gates élémentaires : and, or, xor, not', en: 'Elementary gates: and, or, xor, not' },
-      'Chipsets 40xx : 4001 (NOR), 4011 (NAND), 4030 (XOR), 4069 (NOT), 4071 (OR), 4081 (AND)',
+      { fr: 'Chipsets 40xx : 4001 (NOR), 4011 (NAND), 4030 (XOR), 4069 (NOT), 4071 (OR), 4081 (AND)', en: 'Chipsets 40xx: 4001 (NOR), 4011 (NAND), 4030 (XOR), 4069 (NOT), 4071 (OR), 4081 (AND)' },
       { fr: 'Additionneur 4 bits : 4008', en: '4-bit adder: 4008' },
       { fr: "Parser robuste avec gestion d'erreurs complète", en: 'Robust parser with complete error handling' },
       { fr: 'Shell interactif avec gestion SIGINT pour loop', en: 'Interactive shell with SIGINT handling for loop' },
@@ -488,8 +513,8 @@ export const projects: Project[] = [
       en: 'Multithreaded Gallic village simulation with semaphores, mutex and producer-consumer problem.'
     },
     longDescription: {
-      fr: "Simulation inspirée d'Astérix : villageois (threads) combattent des romains après avoir bu la potion magique préparée par le druide. Problème classique de synchronisation.",
-      en: "Asterix-inspired simulation: villagers (threads) fight Romans after drinking the magic potion prepared by the druid. Classic synchronization problem."
+      fr: "Implémentation du problème producteur-consommateur en C avec pthreads. Le druide (thread producteur) prépare la potion magique, les villageois (threads consommateurs) la boivent pour combattre les romains. Synchronisation via sémaphores POSIX et mutex pour l'accès concurrent au pot. Gestion propre de la terminaison et script de tests automatisés couvrant 625 combinaisons de paramètres.",
+      en: "Producer-consumer problem implementation in C with pthreads. The druid (producer thread) prepares the magic potion, villagers (consumer threads) drink it to fight Romans. Synchronization via POSIX semaphores and mutex for concurrent pot access. Clean termination handling and automated test script covering 625 parameter combinations."
     },
     technologies: ['C', 'Pthreads', 'Semaphores', 'Mutex', 'Makefile'],
     category: 'systems',
@@ -498,7 +523,7 @@ export const projects: Project[] = [
       { fr: 'Chaque villageois = 1 thread indépendant', en: 'Each villager = 1 independent thread' },
       { fr: 'Druide = 1 thread producteur', en: 'Druid = 1 producer thread' },
       { fr: 'Villageois = threads consommateurs', en: 'Villagers = consumer threads' },
-      'POSIX semaphores (sem_wait/sem_post)',
+      { fr: 'Sémaphores POSIX (sem_wait/sem_post)', en: 'POSIX semaphores (sem_wait/sem_post)' },
       { fr: 'Mutex pthread pour accès concurrent au pot', en: 'Pthread mutex for concurrent pot access' },
       { fr: 'Gestion propre de fin (villagers_finished counter)', en: 'Clean exit handling (villagers_finished counter)' },
       { fr: 'Script de tests automatisés (625 combinaisons)', en: 'Automated test script (625 combinations)' },
@@ -541,8 +566,8 @@ export const projects: Project[] = [
       en: 'Complete Duck Hunt shooting game with CSFML: interactive menu, pause system, persistent highscore and sound ambiance.'
     },
     longDescription: {
-      fr: "Premier jeu vidéo complet en C avec CSFML. Reproduction du classique Duck Hunt avec de nombreuses fonctionnalités bonus.",
-      en: "First complete video game in C with CSFML. Reproduction of the classic Duck Hunt with many bonus features."
+      fr: "Reproduction du classique Duck Hunt en C avec CSFML. Menu principal interactif, système de pause avec reprise, écran Game Over avec retry, et highscore persistant sauvegardé en fichier. Sprites animés via sprite sheets, musique de fond, effets sonores au clic et curseur crosshair personnalisé. Game loop indépendante du framerate via sfClock.",
+      en: "Reproduction of the classic Duck Hunt in C with CSFML. Interactive main menu, pause system with resume, Game Over screen with retry, and persistent highscore saved to file. Animated sprites via sprite sheets, background music, click sound effects and custom crosshair cursor. Framerate-independent game loop via sfClock."
     },
     technologies: ['C', 'CSFML', 'Makefile', 'Sprite Sheets', 'File I/O'],
     category: 'systems',
@@ -554,9 +579,9 @@ export const projects: Project[] = [
       { fr: 'Highscore persistant (sauvegarde fichier)', en: 'Persistent highscore (file save)' },
       { fr: 'Musique de fond + effets sonores (click)', en: 'Background music + sound effects (click)' },
       { fr: 'Curseur crosshair personnalisé', en: 'Custom crosshair cursor' },
-      'Police custom (Minecraft.ttf)',
+      { fr: 'Police custom (Minecraft.ttf)', en: 'Custom font (Minecraft.ttf)' },
       { fr: 'Sprites animés via sprite sheets', en: 'Animated sprites via sprite sheets' },
-      'Game loop framerate-independent (sfClock)'
+      { fr: 'Game loop indépendante du framerate (sfClock)', en: 'Framerate-independent game loop (sfClock)' }
     ],
     year: 2023
   },
@@ -568,8 +593,8 @@ export const projects: Project[] = [
       en: '2D air traffic control simulator with QuadTree, dynamic tower placement and collision optimization.'
     },
     longDescription: {
-      fr: 'Simulation de trafic aérien avancée en C avec CSFML. Optimisation des collisions via QuadTree, placement interactif de tours de contrôle et nombreux bonus.',
-      en: 'Advanced air traffic simulation in C with CSFML. Collision optimization via QuadTree, interactive control tower placement and many bonuses.'
+      fr: "Simulateur de contrôle aérien en C avec CSFML gérant des centaines d'entités simultanées. Optimisation des collisions via QuadTree O(n log n), parsing de scripts .rdr pour définir les vols et tours. Placement/modification/suppression de tours de contrôle à la souris, zones de contrôle circulaires, timer de simulation et affichage FPS temps réel.",
+      en: "Air traffic control simulator in C with CSFML handling hundreds of simultaneous entities. Collision optimization via QuadTree O(n log n), .rdr script parsing for flight and tower definitions. Mouse-based tower placement/modification/deletion, circular control zones, simulation timer and real-time FPS display."
     },
     technologies: ['C', 'CSFML', 'Makefile', 'QuadTree', 'File Parsing'],
     category: 'systems',
@@ -582,7 +607,7 @@ export const projects: Project[] = [
       { fr: '[BONUS] Placement de tours à la souris', en: '[BONUS] Mouse tower placement' },
       { fr: '[BONUS] Modification/suppression de tours', en: '[BONUS] Tower modification/deletion' },
       { fr: 'Zones de contrôle circulaires', en: 'Circular control zones' },
-      'Toggle hitboxes/sprites (L/S keys)',
+      { fr: 'Basculer hitboxes/sprites (touches L/S)', en: 'Toggle hitboxes/sprites (L/S keys)' },
       { fr: 'Parsing de scripts .rdr', en: '.rdr script parsing' },
       { fr: "Gestion de centaines d'entités simultanées", en: 'Handling hundreds of simultaneous entities' }
     ],

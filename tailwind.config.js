@@ -4,52 +4,44 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          300: '#91a7ff',
+          400: '#748ffc',
+          500: '#5c7cfa',
+          600: '#4c6ef5',
         },
-        dark: {
-          100: '#1e1e2e',
-          200: '#181825',
-          300: '#11111b',
-          400: '#0a0a0f',
-        }
+        accent: {
+          400: '#ffd43b',
+          500: '#fcc419',
+          600: '#fab005',
+        },
+        cyber: {
+          400: '#69db7c',
+          500: '#51cf66',
+        },
+        danger: {
+          400: '#ff6b6b',
+          500: '#fa5252',
+        },
+        surface: {
+          0: '#09090b',
+          100: '#131318',
+          200: '#1a1a22',
+          300: '#24242e',
+          400: '#2e2e3a',
+        },
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 2s ease-in-out infinite alternate',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'fade-in': 'fadeIn 0.5s ease-out',
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 5px #0ea5e9, 0 0 10px #0ea5e9' },
-          '100%': { boxShadow: '0 0 20px #0ea5e9, 0 0 30px #0ea5e9' },
-        },
-        slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
+      fontSize: {
+        'body-lg': ['1.125rem', { lineHeight: '1.6' }],
+        'body': ['0.9375rem', { lineHeight: '1.6' }],
+        'caption': ['0.8125rem', { lineHeight: '1.5' }],
       },
     },
   },

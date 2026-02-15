@@ -10,7 +10,7 @@ import ChallengePage from './pages/ChallengePage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-dark-400">
+    <div className="min-h-screen bg-surface-0">
       <ScrollToTop />
       <VaultPanel />
       <Routes>

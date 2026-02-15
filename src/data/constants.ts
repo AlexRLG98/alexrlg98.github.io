@@ -7,10 +7,9 @@ export const CONTACT = {
 } as const;
 
 export const STATS = {
-  projects: 19,
-  ctfChallenges: 75,
-  yearsEpitech: 3,
-  languages: 6,
+  projects: 21,
+  ctfChallenges: 85,
+  languages: 9,
 } as const;
 
 // Date générée automatiquement au build

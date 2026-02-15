@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { Linkedin, Heart, Github, Clock } from 'lucide-react';
+import { Linkedin, Github, Clock } from 'lucide-react';
 import { CONTACT, LAST_UPDATE } from '../data/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -20,54 +19,48 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-8 px-4 border-t border-gray-800">
+    <footer className="py-8 px-4 border-t border-surface-300">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold gradient-text"
-          >
-            {'<Alexandre />'}
-          </motion.div>
+          <span className="text-lg font-bold">
+            <span className="text-white">A</span>
+            <span className="text-primary-400">.</span>
+          </span>
 
           {/* Social links */}
           <div className="flex items-center gap-4">
-            <motion.a
+            <a
               href={CONTACT.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, y: -2 }}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-500 hover:text-white transition-colors"
               aria-label={t('nav.linkedinProfile')}
             >
-              <Linkedin size={20} />
-            </motion.a>
-            <motion.a
+              <Linkedin size={18} />
+            </a>
+            <a
               href={CONTACT.github}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, y: -2 }}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-500 hover:text-white transition-colors"
               aria-label={t('nav.githubProfile')}
             >
-              <Github size={20} />
-            </motion.a>
+              <Github size={18} />
+            </a>
           </div>
 
           {/* Copyright */}
-          <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <span>{language === 'fr' ? 'Fait avec' : 'Made with'}</span>
-            <Heart className="text-red-500" size={14} fill="currentColor" />
-            <span>{language === 'fr' ? 'par Alexandre' : 'by Alexandre'} - {currentYear}</span>
-          </div>
+          <p className="text-gray-500 text-caption">
+            &copy; {currentYear} Alexandre
+          </p>
         </div>
 
         {/* Last update */}
-        <div className="flex justify-center mt-4 pt-4 border-t border-gray-800/50">
-          <div className="flex items-center gap-2 text-gray-500 text-xs">
+        <div className="flex justify-center mt-4 pt-4 border-t border-surface-300/50">
+          <div className="flex items-center gap-2 text-gray-500 text-caption">
             <Clock size={12} />
-            <span>{t('footer.lastUpdate')} {formatLastUpdate()} (UTC+1 Paris/Monaco)</span>
+            <span>{t('footer.lastUpdate')} {formatLastUpdate()} (UTC+1)</span>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
   const location = useLocation();
   const navigate = useNavigate();
   const { language, setLanguage, t } = useLanguage();
@@ -47,36 +48,57 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll spy — highlight active section
+  useEffect(() => {
+    if (!isHomePage) return;
+    const sectionIds = ['hero', 'projects', 'achievements', 'skills', 'timeline', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
+    );
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [isHomePage]);
+
   return (
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass py-3' : 'py-4'
+        scrolled
+          ? 'bg-surface-0/80 backdrop-blur-md border-b border-surface-300 py-3'
+          : 'py-4'
       }`}
       style={{ minHeight: '64px' }}
       role="banner"
     >
-      <nav aria-label="Navigation principale">
+      <nav aria-label={language === 'fr' ? 'Navigation principale' : 'Main navigation'}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr]">
           {/* Logo */}
-          <motion.button
+          <button
             onClick={() => handleNavClick('hero')}
-            className="text-2xl font-bold gradient-text cursor-pointer"
-            whileHover={{ scale: 1.05 }}
+            className="text-xl font-bold cursor-pointer"
           >
-            {'<Alexandre />'}
-          </motion.button>
+            <span className="text-white">A</span>
+            <span className="text-primary-400">.</span>
+          </button>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation — truly centered */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.section}
                 onClick={() => handleNavClick(item.section)}
-                className="nav-link text-gray-300 hover:text-white transition-colors cursor-pointer"
+                className={`hover:text-white transition-colors cursor-pointer text-sm ${activeSection === item.section ? 'text-white' : 'text-gray-400'}`}
               >
                 {item.name}
               </button>
@@ -84,44 +106,40 @@ export default function Navbar() {
           </div>
 
           {/* Social Links + Language */}
-          <div className="hidden md:flex items-center space-x-4">
-            <motion.button
+          <div className="hidden md:flex items-center justify-end space-x-3">
+            <button
               onClick={toggleLanguage}
-              whileHover={{ scale: 1.2 }}
-              className="text-gray-400 hover:text-white flex items-center gap-1"
-              aria-label="Change language"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-surface-100 border border-surface-300 text-gray-400 hover:text-white hover:border-surface-400 transition-colors"
+              aria-label={language === 'fr' ? 'Changer de langue' : 'Change language'}
             >
-              <Globe size={18} />
+              <Globe size={14} />
               <span className="text-xs font-medium uppercase">{language}</span>
-            </motion.button>
-            <motion.a
+            </button>
+            <a
               href={CONTACT.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, color: '#00d9f5' }}
-              className="text-gray-400 hover:text-white"
+              className="text-gray-400 hover:text-white transition-colors"
               aria-label={t('nav.linkedinProfile')}
             >
-              <Linkedin size={20} />
-            </motion.a>
-            <motion.button
+              <Linkedin size={18} />
+            </a>
+            <button
               onClick={() => handleNavClick('contact')}
-              whileHover={{ scale: 1.2, color: '#667eea' }}
-              className="text-gray-400 hover:text-white"
+              className="text-gray-400 hover:text-white transition-colors"
               aria-label={t('nav.contactForm')}
             >
-              <Mail size={20} />
-            </motion.button>
-            <motion.a
+              <Mail size={18} />
+            </button>
+            <a
               href={CONTACT.github}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, color: '#00d9f5' }}
-              className="text-gray-400 hover:text-white"
+              className="text-gray-400 hover:text-white transition-colors"
               aria-label={t('nav.githubProfile')}
             >
-              <Github size={20} />
-            </motion.a>
+              <Github size={18} />
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -140,24 +158,24 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4 glass rounded-lg p-4"
+            className="md:hidden mt-4 bg-surface-100 border border-surface-300 rounded-lg p-4"
           >
             {navItems.map((item) => (
               <button
                 key={item.section}
                 onClick={() => handleNavClick(item.section)}
-                className="block w-full text-left py-2 text-gray-300 hover:text-white cursor-pointer"
+                className={`block w-full text-left py-2 hover:text-white cursor-pointer text-sm ${activeSection === item.section ? 'text-white' : 'text-gray-400'}`}
               >
                 {item.name}
               </button>
             ))}
-            <div className="flex items-center space-x-4 mt-4 pt-4 border-t border-gray-700">
+            <div className="flex items-center space-x-4 mt-4 pt-4 border-t border-surface-300">
               <button
                 onClick={toggleLanguage}
-                className="text-gray-400 flex items-center gap-1"
-                aria-label="Change language"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-surface-200 border border-surface-300 text-gray-400"
+                aria-label={language === 'fr' ? 'Changer de langue' : 'Change language'}
               >
-                <Globe size={18} />
+                <Globe size={14} />
                 <span className="text-xs font-medium uppercase">{language}</span>
               </button>
               <a
@@ -167,14 +185,14 @@ export default function Navbar() {
                 className="text-gray-400"
                 aria-label={t('nav.linkedinProfile')}
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </a>
               <button
                 onClick={() => handleNavClick('contact')}
                 className="text-gray-400"
                 aria-label={t('nav.contactForm')}
               >
-                <Mail size={20} />
+                <Mail size={18} />
               </button>
               <a
                 href={CONTACT.github}
@@ -183,7 +201,7 @@ export default function Navbar() {
                 className="text-gray-400"
                 aria-label={t('nav.githubProfile')}
               >
-                <Github size={20} />
+                <Github size={18} />
               </a>
             </div>
           </motion.div>

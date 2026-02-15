@@ -63,11 +63,22 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Projects />
+      <div className="section-divider" />
+      <div className="section-alt">
+        <Projects />
+      </div>
+      <div className="section-divider" />
       <Achievements />
-      <Skills />
+      <div className="section-divider" />
+      <div className="section-alt">
+        <Skills />
+      </div>
+      <div className="section-divider" />
       <Timeline />
-      <Contact />
+      <div className="section-divider" />
+      <div className="section-alt">
+        <Contact />
+      </div>
     </>
   );
 }

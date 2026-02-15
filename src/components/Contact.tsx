@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import { Linkedin, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Linkedin, MapPin, Send, CheckCircle, AlertCircle, Briefcase, Shield, Building2 } from 'lucide-react';
 import { useState, useRef } from 'react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { CONTACT } from '../data/constants';
 import { useLanguage } from '../contexts/LanguageContext';
+import SectionHeader from './SectionHeader';
 
 export default function Contact() {
   const { t, language } = useLanguage();
@@ -68,78 +69,97 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-grid">
+    <section id="contact" className="py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section header */}
+        <SectionHeader title={t('contact.title')} subtitle={t('contact.subtitle')} />
+
+        {/* Availability banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="max-w-5xl mx-auto mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">{t('contact.title')}</span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            {t('contact.subtitle')}
-          </p>
+          <div className="card-elevated p-5">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary-400"></span>
+              </span>
+              <span className="text-white font-semibold">{t('contact.status.title')}</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-500/10 text-primary-400 text-sm border border-primary-500/15">
+                <Building2 size={14} />
+                Monaco Telecom
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-danger-500/10 text-danger-400 text-sm border border-danger-500/15">
+                <Shield size={14} />
+                {t('contact.status.security')}
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-200 text-gray-400 text-sm border border-surface-300">
+                <Briefcase size={14} />
+                {t('contact.status.period')}
+              </span>
+            </div>
+            <p className="text-gray-500 text-sm mt-3">
+              {t('contact.status.detail')}
+            </p>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact info */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl font-bold text-white mb-4">
               {t('contact.letsTalk')}
             </h3>
             <p className="text-gray-400 mb-8">
               {t('contact.availability')}
             </p>
 
-            <div className="space-y-4">
-              <motion.a
+            <div className="space-y-3">
+              <a
                 href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 p-4 glass rounded-lg hover:bg-white/5 transition-colors"
+                className="flex items-center gap-4 p-4 card-surface hover:border-surface-400 transition-colors"
               >
-                <div className="p-3 rounded-full bg-blue-500/20">
-                  <Linkedin className="text-blue-400" size={20} />
+                <div className="p-2.5 rounded-lg bg-primary-500/15">
+                  <Linkedin className="text-primary-400" size={20} />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">LinkedIn</p>
-                  <p className="text-white">{CONTACT.name}</p>
+                  <p className="text-caption text-gray-500">LinkedIn</p>
+                  <p className="text-white text-sm">{CONTACT.name}</p>
                 </div>
-              </motion.a>
+              </a>
 
-              <motion.div
-                whileHover={{ x: 5 }}
-                className="flex items-center gap-4 p-4 glass rounded-lg"
-              >
-                <div className="p-3 rounded-full bg-green-500/20">
-                  <MapPin className="text-green-400" size={20} />
+              <div className="flex items-center gap-4 p-4 card-surface">
+                <div className="p-2.5 rounded-lg bg-cyber-500/15">
+                  <MapPin className="text-cyber-400" size={20} />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">{t('contact.location')}</p>
-                  <p className="text-white">{CONTACT.location}</p>
+                  <p className="text-caption text-gray-500">{t('contact.location')}</p>
+                  <p className="text-white text-sm">{CONTACT.location}</p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
 
           {/* Contact form */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 12 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="glass rounded-xl p-6">
+            <form onSubmit={handleSubmit} className="card-surface p-6">
               <div className="mb-4">
                 <label
                   htmlFor="name"
@@ -154,7 +174,7 @@ export default function Contact() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-dark-300 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors"
+                  className="w-full px-4 py-3 bg-surface-100 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors"
                   placeholder={t('contact.form.namePlaceholder')}
                   required
                 />
@@ -174,7 +194,7 @@ export default function Contact() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-dark-300 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors"
+                  className="w-full px-4 py-3 bg-surface-100 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors"
                   placeholder={t('contact.form.emailPlaceholder')}
                   required
                 />
@@ -194,7 +214,7 @@ export default function Contact() {
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
                   }
-                  className="w-full px-4 py-3 bg-dark-300 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors resize-none"
+                  className="w-full px-4 py-3 bg-surface-100 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors resize-none"
                   placeholder={t('contact.form.messagePlaceholder')}
                   required
                 />
@@ -216,7 +236,7 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg flex items-center gap-2 text-green-400"
+                  className="mb-4 p-3 bg-cyber-500/15 border border-cyber-500/25 rounded-lg flex items-center gap-2 text-cyber-400"
                 >
                   <CheckCircle size={18} />
                   <span>{t('contact.form.success')}</span>
@@ -227,22 +247,20 @@ export default function Contact() {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mb-4 p-3 bg-red-500/20 border border-red-500/30 rounded-lg flex items-center gap-2 text-red-400"
+                  className="mb-4 p-3 bg-danger-500/15 border border-danger-500/25 rounded-lg flex items-center gap-2 text-danger-400"
                 >
                   <AlertCircle size={18} />
                   <span>{errorMessage}</span>
                 </motion.div>
               )}
 
-              <motion.button
+              <button
                 type="submit"
                 disabled={status === 'loading'}
-                whileHover={{ scale: status === 'loading' ? 1 : 1.02 }}
-                whileTap={{ scale: status === 'loading' ? 1 : 0.98 }}
-                className={`w-full py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2 transition-all ${
+                className={`w-full py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2 transition-colors ${
                   status === 'loading'
-                    ? 'bg-gray-600 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-primary-500 to-cyan-500 hover:shadow-lg hover:shadow-primary-500/25'
+                    ? 'bg-surface-300 cursor-not-allowed'
+                    : 'bg-primary-500 hover:bg-primary-600'
                 }`}
               >
                 {status === 'loading' ? (
@@ -256,7 +274,7 @@ export default function Contact() {
                     {t('contact.form.send')}
                   </>
                 )}
-              </motion.button>
+              </button>
             </form>
           </motion.div>
         </div>

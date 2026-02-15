@@ -117,7 +117,7 @@ export default function CompetitionPage() {
   // Early return for not found - AFTER all hooks
   if (!competition) {
     return (
-      <div className="min-h-screen bg-dark-400">
+      <div className="min-h-screen bg-surface-0">
         <Navbar />
         <div className="pt-32 pb-24 px-6 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">{t('competition.notFound')}</h1>
@@ -202,7 +202,7 @@ export default function CompetitionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-400">
+    <div className="min-h-screen bg-surface-0">
       <Navbar />
 
       <main className="pt-24 pb-16">
@@ -285,7 +285,7 @@ export default function CompetitionPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="glass rounded-2xl p-6 mb-8"
+            className="card-surface rounded-2xl p-6 mb-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <Terminal className="w-5 h-5 text-green-500" />
@@ -306,7 +306,7 @@ export default function CompetitionPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="glass rounded-2xl p-6 mb-8"
+            className="card-surface rounded-2xl p-6 mb-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <Tag className="w-5 h-5 text-blue-500" />
@@ -316,7 +316,7 @@ export default function CompetitionPage() {
               {competition.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-4 py-2 bg-dark-200 rounded-lg text-gray-300"
+                  className="px-4 py-2 bg-surface-200 rounded-lg text-gray-300"
                 >
                   {tech}
                 </span>
@@ -330,11 +330,11 @@ export default function CompetitionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass rounded-2xl p-6 mb-8"
+              className="card-surface rounded-2xl p-6 mb-8"
             >
               <h2 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
                 <Flag className="w-5 h-5 text-red-500" />
-                Writeup
+                {t('challenge.writeup')}
               </h2>
               <div className="prose prose-invert prose-sm max-w-none">
                 <ReactMarkdown
@@ -344,7 +344,7 @@ export default function CompetitionPage() {
                       const match = /language-(\w+)/.exec(className || '');
                       const isInline = !match;
                       return isInline ? (
-                        <code className="bg-dark-200 px-1.5 py-0.5 rounded text-primary-400" {...props}>
+                        <code className="bg-surface-200 px-1.5 py-0.5 rounded text-primary-400" {...props}>
                           {children}
                         </code>
                       ) : (
@@ -352,7 +352,7 @@ export default function CompetitionPage() {
                           style={oneDark}
                           language={match[1]}
                           PreTag="div"
-                          className="rounded-lg !bg-dark-200 !my-4"
+                          className="rounded-lg !bg-surface-200 !my-4"
                         >
                           {String(children).replace(/\n$/, '')}
                         </SyntaxHighlighter>
@@ -362,7 +362,7 @@ export default function CompetitionPage() {
                       <h1 className="text-2xl font-bold text-white mt-8 mb-4">{children}</h1>
                     ),
                     h2: ({ children }) => (
-                      <h2 className="text-xl font-semibold text-white mt-6 mb-3 border-b border-gray-800 pb-2">{children}</h2>
+                      <h2 className="text-xl font-semibold text-white mt-6 mb-3 border-b border-surface-300 pb-2">{children}</h2>
                     ),
                     h3: ({ children }) => (
                       <h3 className="text-lg font-medium text-gray-200 mt-4 mb-2">{children}</h3>
@@ -373,17 +373,17 @@ export default function CompetitionPage() {
                     li: ({ children }) => <li className="mb-1">{children}</li>,
                     table: ({ children }) => (
                       <div className="overflow-x-auto my-4">
-                        <table className="min-w-full border border-gray-700 rounded-lg overflow-hidden">
+                        <table className="min-w-full border border-surface-300 rounded-lg overflow-hidden">
                           {children}
                         </table>
                       </div>
                     ),
-                    thead: ({ children }) => <thead className="bg-dark-200">{children}</thead>,
+                    thead: ({ children }) => <thead className="bg-surface-200">{children}</thead>,
                     th: ({ children }) => (
-                      <th className="px-4 py-2 text-left text-gray-300 font-medium border-b border-gray-700">{children}</th>
+                      <th className="px-4 py-2 text-left text-gray-300 font-medium border-b border-surface-300">{children}</th>
                     ),
                     td: ({ children }) => (
-                      <td className="px-4 py-2 text-gray-400 border-b border-gray-800">{children}</td>
+                      <td className="px-4 py-2 text-gray-400 border-b border-surface-300">{children}</td>
                     ),
                     blockquote: ({ children }) => (
                       <blockquote className="border-l-4 border-primary-500 pl-4 my-4 text-gray-400 italic">{children}</blockquote>
@@ -407,7 +407,7 @@ export default function CompetitionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass rounded-2xl p-6 mb-8"
+              className="card-surface rounded-2xl p-6 mb-8"
             >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
@@ -422,7 +422,7 @@ export default function CompetitionPage() {
                 {unlockedMachines.size > 0 && (
                   <button
                     onClick={handleLockAllMachines}
-                    className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white glass rounded-lg transition-colors"
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white card-surface rounded-lg transition-colors"
                   >
                     <Lock size={14} />
                     {t('competition.lockAll')}
@@ -443,7 +443,7 @@ export default function CompetitionPage() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + i * 0.05 }}
-                        className="bg-dark-200 rounded-xl p-4 hover:bg-dark-100 transition-colors cursor-pointer group"
+                        className="bg-surface-200 rounded-xl p-4 hover:bg-surface-100 transition-colors cursor-pointer group"
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
                           <div>
@@ -465,12 +465,12 @@ export default function CompetitionPage() {
                         </div>
                         <div className="flex flex-wrap gap-1.5 mb-3">
                           {machine.techniques.slice(0, 3).map((tech) => (
-                            <span key={tech} className="px-2 py-0.5 bg-dark-300 rounded text-xs text-gray-400">
+                            <span key={tech} className="px-2 py-0.5 bg-surface-300 rounded text-xs text-gray-400">
                               {tech}
                             </span>
                           ))}
                           {machine.techniques.length > 3 && (
-                            <span className="px-2 py-0.5 bg-dark-300 rounded text-xs text-gray-500">
+                            <span className="px-2 py-0.5 bg-surface-300 rounded text-xs text-gray-500">
                               +{machine.techniques.length - 3}
                             </span>
                           )}
@@ -493,7 +493,7 @@ export default function CompetitionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass rounded-2xl p-6 mb-8"
+              className="card-surface rounded-2xl p-6 mb-8"
             >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-white flex items-center gap-2">
@@ -503,7 +503,7 @@ export default function CompetitionPage() {
                 {hasEncryptedContent && isUnlocked && (
                   <button
                     onClick={handleLock}
-                    className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white glass rounded-lg transition-colors"
+                    className="flex items-center gap-2 px-3 py-1.5 text-xs text-gray-400 hover:text-white card-surface rounded-lg transition-colors"
                   >
                     <Unlock size={14} />
                     {t('competition.lock')}
@@ -516,7 +516,7 @@ export default function CompetitionPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-dark-300 rounded-xl p-6 mb-6"
+                  className="bg-surface-300 rounded-xl p-6 mb-6"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-3 rounded-full bg-primary-500/20">
@@ -537,12 +537,13 @@ export default function CompetitionPage() {
                           setError('');
                         }}
                         placeholder={t('competition.passwordPlaceholder')}
-                        className="w-full px-4 py-3 pr-12 bg-dark-400 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
+                        className="w-full px-4 py-3 pr-12 bg-surface-0 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                        aria-label={showPassword ? (language === 'fr' ? 'Masquer le mot de passe' : 'Hide password') : (language === 'fr' ? 'Afficher le mot de passe' : 'Show password')}
                       >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -581,7 +582,7 @@ export default function CompetitionPage() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + i * 0.03 }}
-                        className="bg-dark-200/50 rounded-xl p-4 border border-dashed border-gray-700 opacity-60"
+                        className="bg-surface-200/50 rounded-xl p-4 border border-dashed border-surface-300 opacity-60"
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
                           <div className="flex items-center gap-2">
@@ -617,7 +618,7 @@ export default function CompetitionPage() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + i * 0.03 }}
-                        className="bg-dark-200 rounded-xl p-4 opacity-75"
+                        className="bg-surface-200 rounded-xl p-4 opacity-75"
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
                           <div>
@@ -638,7 +639,7 @@ export default function CompetitionPage() {
                         {challenge.techniques.length > 0 && (
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {challenge.techniques.map((tech) => (
-                              <span key={tech} className="px-2 py-0.5 bg-dark-300 rounded text-xs text-gray-400">
+                              <span key={tech} className="px-2 py-0.5 bg-surface-300 rounded text-xs text-gray-400">
                                 {tech}
                               </span>
                             ))}
@@ -661,7 +662,7 @@ export default function CompetitionPage() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 + i * 0.03 }}
-                        className="bg-dark-200 rounded-xl p-4 hover:bg-dark-100 transition-colors cursor-pointer group"
+                        className="bg-surface-200 rounded-xl p-4 hover:bg-surface-100 transition-colors cursor-pointer group"
                       >
                         <div className="flex items-start justify-between gap-3 mb-3">
                           <div>
@@ -688,7 +689,7 @@ export default function CompetitionPage() {
                         {challenge.techniques.length > 0 && (
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {challenge.techniques.map((tech) => (
-                              <span key={tech} className="px-2 py-0.5 bg-dark-300 rounded text-xs text-gray-400">
+                              <span key={tech} className="px-2 py-0.5 bg-surface-300 rounded text-xs text-gray-400">
                                 {tech}
                               </span>
                             ))}
@@ -712,7 +713,7 @@ export default function CompetitionPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="glass rounded-2xl p-8 text-center"
+              className="card-surface rounded-2xl p-8 text-center"
             >
               <Flag className="w-12 h-12 text-gray-600 mx-auto mb-4" />
               <p className="text-gray-500">{t('competition.writeupComing')}</p>

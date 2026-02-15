@@ -5,7 +5,7 @@ import { usePasswordVault } from '../contexts/PasswordVaultContext';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function VaultPanel() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { isVaultUnlocked, unlockVault, lockVault, getAllPasswords } = usePasswordVault();
   const [isOpen, setIsOpen] = useState(false);
   const [password, setPassword] = useState('');
@@ -36,9 +36,10 @@ export default function VaultPanel() {
       {/* Bouton flottant */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 p-4 rounded-full glass shadow-lg hover:shadow-primary-500/25 transition-all group"
+        className="fixed bottom-6 right-6 z-40 p-4 rounded-full bg-surface-200 border border-surface-400 shadow-lg hover:shadow-primary-500/25 transition-all group"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        aria-label={t('vault.title')}
       >
         {isVaultUnlocked ? (
           <Unlock className="w-6 h-6 text-green-400" />
@@ -65,10 +66,10 @@ export default function VaultPanel() {
               initial={{ opacity: 0, x: 300 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 300 }}
-              className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-dark-100 border-l border-gray-800 z-50 overflow-y-auto"
+              className="fixed right-0 top-0 bottom-0 w-full max-w-md bg-surface-100 border-l border-surface-300 z-50 overflow-y-auto"
             >
               {/* Header */}
-              <div className="sticky top-0 bg-dark-100/95 backdrop-blur-sm border-b border-gray-800 p-4 pt-20 flex items-center justify-between">
+              <div className="sticky top-0 bg-surface-100/95 backdrop-blur-sm border-b border-surface-300 p-4 pt-20 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className={`p-2 rounded-lg ${isVaultUnlocked ? 'bg-green-500/20' : 'bg-primary-500/20'}`}>
                     <Shield className={`w-5 h-5 ${isVaultUnlocked ? 'text-green-400' : 'text-primary-400'}`} />
@@ -82,7 +83,8 @@ export default function VaultPanel() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="p-2 hover:bg-dark-200 rounded-lg transition-colors"
+                  className="p-2 hover:bg-surface-200 rounded-lg transition-colors"
+                  aria-label={language === 'fr' ? 'Fermer' : 'Close'}
                 >
                   <X className="w-5 h-5 text-gray-400" />
                 </button>
@@ -110,12 +112,13 @@ export default function VaultPanel() {
                           setError('');
                         }}
                         placeholder={t('vault.passwordPlaceholder')}
-                        className="w-full px-4 py-3 pr-12 bg-dark-300 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
+                        className="w-full px-4 py-3 pr-12 bg-surface-300 border border-surface-300 rounded-lg text-white focus:outline-none focus:border-primary-500 transition-colors font-mono"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                        aria-label={showPassword ? (language === 'fr' ? 'Masquer le mot de passe' : 'Hide password') : (language === 'fr' ? 'Afficher le mot de passe' : 'Show password')}
                       >
                         {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                       </button>
@@ -163,13 +166,13 @@ export default function VaultPanel() {
                           {Object.entries(passwords.ctf).map(([id, pwd]) => (
                             <div
                               key={id}
-                              className="p-3 bg-dark-200 rounded-lg border border-gray-800"
+                              className="p-3 bg-surface-200 rounded-lg border border-surface-300"
                             >
                               <div className="flex items-center justify-between mb-2">
                                 <span className="text-sm text-gray-300 font-medium">{id}</span>
                                 <button
                                   onClick={() => handleCopy(pwd, `ctf-${id}`)}
-                                  className="p-1.5 hover:bg-dark-300 rounded transition-colors"
+                                  className="p-1.5 hover:bg-surface-300 rounded transition-colors"
                                 >
                                   {copiedId === `ctf-${id}` ? (
                                     <Check size={14} className="text-green-400" />
@@ -197,13 +200,13 @@ export default function VaultPanel() {
                           {Object.entries(passwords.machines).map(([id, data]) => (
                             <div
                               key={id}
-                              className="p-3 bg-dark-200 rounded-lg border border-gray-800"
+                              className="p-3 bg-surface-200 rounded-lg border border-surface-300"
                             >
                               <div className="flex items-center justify-between mb-2">
                                 <span className="text-sm text-gray-300 font-medium">{id}</span>
                                 <button
                                   onClick={() => handleCopy(data.password, `machine-${id}`)}
-                                  className="p-1.5 hover:bg-dark-300 rounded transition-colors"
+                                  className="p-1.5 hover:bg-surface-300 rounded transition-colors"
                                 >
                                   {copiedId === `machine-${id}` ? (
                                     <Check size={14} className="text-green-400" />

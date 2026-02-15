@@ -41,7 +41,7 @@ export default function MachinePage() {
 
   if (!machine || !competition) {
     return (
-      <div className="min-h-screen bg-dark-400">
+      <div className="min-h-screen bg-surface-0">
         <Navbar />
         <div className="pt-32 pb-24 px-6 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">{t('challenge.notFound')}</h1>
@@ -80,7 +80,7 @@ export default function MachinePage() {
       const match = /language-(\w+)/.exec(className || '');
       const isInline = !match;
       return isInline ? (
-        <code className="bg-dark-200 px-1.5 py-0.5 rounded text-primary-400" {...props}>
+        <code className="bg-surface-200 px-1.5 py-0.5 rounded text-primary-400" {...props}>
           {children}
         </code>
       ) : (
@@ -88,14 +88,14 @@ export default function MachinePage() {
           style={oneDark}
           language={match[1]}
           PreTag="div"
-          className="rounded-lg !bg-dark-200 !my-4"
+          className="rounded-lg !bg-surface-200 !my-4"
         >
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       );
     },
     h2: ({ children }: { children?: React.ReactNode }) => (
-      <h2 className="text-xl font-semibold text-white mt-8 mb-4 border-b border-gray-800 pb-2">{children}</h2>
+      <h2 className="text-xl font-semibold text-white mt-8 mb-4 border-b border-surface-300 pb-2">{children}</h2>
     ),
     h3: ({ children }: { children?: React.ReactNode }) => (
       <h3 className="text-lg font-medium text-gray-200 mt-6 mb-3">{children}</h3>
@@ -105,7 +105,7 @@ export default function MachinePage() {
     ol: ({ children }: { children?: React.ReactNode }) => <ol className="text-gray-300 mb-4 list-decimal pl-6">{children}</ol>,
     li: ({ children }: { children?: React.ReactNode }) => <li className="mb-1">{children}</li>,
     strong: ({ children }: { children?: React.ReactNode }) => <strong className="text-white font-semibold">{children}</strong>,
-    hr: () => <hr className="border-gray-700 my-6" />,
+    hr: () => <hr className="border-surface-300 my-6" />,
     a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
       <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-300 underline">
         {children}
@@ -114,7 +114,7 @@ export default function MachinePage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-400">
+    <div className="min-h-screen bg-surface-0">
       <Navbar />
 
       <main className="pt-24 pb-16">
@@ -179,17 +179,17 @@ export default function MachinePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="glass rounded-2xl p-6 mb-8"
+            className="card-surface rounded-2xl p-6 mb-8"
           >
             <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
               <Flag className="w-5 h-5 text-red-500" />
-              Flags
+              {t('achievements.stats.flags')}
             </h2>
             {Object.keys(machine.flags).every(key => isFlagLocked(key as keyof typeof machine.flags)) && Object.keys(unlockedFlags).length === 0 ? (
-              <div className="bg-dark-200 rounded-xl p-4">
+              <div className="bg-surface-200 rounded-xl p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Flag className="w-4 h-4 text-green-500" />
-                  <span className="text-gray-400 text-sm">Flags</span>
+                  <span className="text-gray-400 text-sm">{t('achievements.stats.flags')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-500">
                   <Lock size={14} />
@@ -199,7 +199,7 @@ export default function MachinePage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {(machine.flags.web || unlockedFlags.web) && (
-                  <div className="bg-dark-200 rounded-lg p-3">
+                  <div className="bg-surface-200 rounded-lg p-3">
                     <div className="text-xs text-gray-500 mb-1">Web Flag</div>
                     {isFlagLocked('web') ? (
                       <div className="flex items-center gap-2 text-gray-500">
@@ -212,7 +212,7 @@ export default function MachinePage() {
                   </div>
                 )}
                 {(machine.flags.services || unlockedFlags.services) && (
-                  <div className="bg-dark-200 rounded-lg p-3">
+                  <div className="bg-surface-200 rounded-lg p-3">
                     <div className="text-xs text-gray-500 mb-1">Services Flag</div>
                     {isFlagLocked('services') ? (
                       <div className="flex items-center gap-2 text-gray-500">
@@ -225,7 +225,7 @@ export default function MachinePage() {
                   </div>
                 )}
                 {(machine.flags.internal || unlockedFlags.internal) && (
-                  <div className="bg-dark-200 rounded-lg p-3">
+                  <div className="bg-surface-200 rounded-lg p-3">
                     <div className="text-xs text-gray-500 mb-1">Internal Flag</div>
                     {isFlagLocked('internal') ? (
                       <div className="flex items-center gap-2 text-gray-500">
@@ -238,7 +238,7 @@ export default function MachinePage() {
                   </div>
                 )}
                 {(machine.flags.user || unlockedFlags.user) && (
-                  <div className="bg-dark-200 rounded-lg p-3">
+                  <div className="bg-surface-200 rounded-lg p-3">
                     <div className="text-xs text-gray-500 mb-1">User Flag</div>
                     {isFlagLocked('user') ? (
                       <div className="flex items-center gap-2 text-gray-500">
@@ -251,7 +251,7 @@ export default function MachinePage() {
                   </div>
                 )}
                 {(machine.flags.root || unlockedFlags.root) && (
-                  <div className="bg-dark-200 rounded-lg p-3">
+                  <div className="bg-surface-200 rounded-lg p-3">
                     <div className="text-xs text-gray-500 mb-1">Root Flag</div>
                     {isFlagLocked('root') ? (
                       <div className="flex items-center gap-2 text-gray-500">
@@ -273,7 +273,7 @@ export default function MachinePage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="glass rounded-2xl p-6 mb-8"
+              className="card-surface rounded-2xl p-6 mb-8"
             >
               <h2 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
                 <Tag className="w-5 h-5 text-blue-500" />
@@ -283,7 +283,7 @@ export default function MachinePage() {
                 {machine.techniques.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 bg-dark-200 rounded-lg text-gray-300 text-sm"
+                    className="px-3 py-1.5 bg-surface-200 rounded-lg text-gray-300 text-sm"
                   >
                     {tech}
                   </span>
@@ -297,7 +297,7 @@ export default function MachinePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="glass rounded-2xl p-6"
+            className="card-surface rounded-2xl p-6"
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-white flex items-center gap-2">

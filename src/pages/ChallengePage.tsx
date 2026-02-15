@@ -101,7 +101,7 @@ export default function ChallengePage() {
 
   if (!competition || !challenge) {
     return (
-      <div className="min-h-screen bg-dark-400 flex items-center justify-center">
+      <div className="min-h-screen bg-surface-0 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">{t('challenge.notFound')}</h1>
           <Link to="/" state={{ scrollTo: 'achievements' }} className="text-primary-400 hover:text-primary-300">
@@ -114,7 +114,7 @@ export default function ChallengePage() {
 
   if (isChecking) {
     return (
-      <div className="min-h-screen bg-dark-400 flex items-center justify-center">
+      <div className="min-h-screen bg-surface-0 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-400 mx-auto"></div>
         </div>
@@ -145,7 +145,7 @@ export default function ChallengePage() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-400">
+    <div className="min-h-screen bg-surface-0">
       <Navbar />
 
       <main className="pt-24 pb-16">
@@ -169,7 +169,7 @@ export default function ChallengePage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass rounded-2xl p-8 mb-8"
+            className="card-surface rounded-2xl p-8 mb-8"
           >
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
@@ -190,10 +190,10 @@ export default function ChallengePage() {
             </div>
 
             {/* Flag */}
-            <div className="bg-dark-300 rounded-xl p-4">
+            <div className="bg-surface-300 rounded-xl p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Flag className="w-4 h-4 text-green-500" />
-                <span className="text-gray-400 text-sm">Flag</span>
+                <span className="text-gray-400 text-sm">{t('achievements.stats.flags')}</span>
               </div>
               {unlockedFlag ? (
                 <code className="text-green-400 font-mono text-sm break-all">{unlockedFlag}</code>
@@ -213,7 +213,7 @@ export default function ChallengePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="glass rounded-2xl p-8 mb-8"
+            className="card-surface rounded-2xl p-8 mb-8"
           >
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-white flex items-center gap-2">
@@ -241,7 +241,7 @@ export default function ChallengePage() {
                           const match = /language-(\w+)/.exec(className || '');
                           const isInline = !match && !className;
                           return isInline ? (
-                            <code className="bg-dark-300 px-1.5 py-0.5 rounded text-primary-400" {...props}>
+                            <code className="bg-surface-300 px-1.5 py-0.5 rounded text-primary-400" {...props}>
                               {children}
                             </code>
                           ) : (
@@ -249,14 +249,14 @@ export default function ChallengePage() {
                               style={oneDark}
                               language={match ? match[1] : 'text'}
                               PreTag="div"
-                              className="rounded-lg !bg-dark-300 !my-4"
+                              className="rounded-lg !bg-surface-300 !my-4"
                             >
                               {String(children).replace(/\n$/, '')}
                             </SyntaxHighlighter>
                           );
                         },
                         h2: ({ children }) => (
-                          <h2 className="text-lg font-semibold text-white mt-6 mb-3 border-b border-dark-200 pb-2">{children}</h2>
+                          <h2 className="text-lg font-semibold text-white mt-6 mb-3 border-b border-surface-200 pb-2">{children}</h2>
                         ),
                         h3: ({ children }) => (
                           <h3 className="text-base font-medium text-gray-200 mt-4 mb-2">{children}</h3>
@@ -277,7 +277,7 @@ export default function ChallengePage() {
                           <strong className="text-white font-semibold">{children}</strong>
                         ),
                         hr: () => (
-                          <hr className="border-dark-200 my-6" />
+                          <hr className="border-surface-200 my-6" />
                         ),
                       }}
                     >
@@ -295,7 +295,7 @@ export default function ChallengePage() {
                       const match = /language-(\w+)/.exec(className || '');
                       const isInline = !match && !className;
                       return isInline ? (
-                        <code className="bg-dark-300 px-1.5 py-0.5 rounded text-primary-400" {...props}>
+                        <code className="bg-surface-300 px-1.5 py-0.5 rounded text-primary-400" {...props}>
                           {children}
                         </code>
                       ) : (
@@ -303,14 +303,14 @@ export default function ChallengePage() {
                           style={oneDark}
                           language={match ? match[1] : 'text'}
                           PreTag="div"
-                          className="rounded-lg !bg-dark-300 !my-4"
+                          className="rounded-lg !bg-surface-300 !my-4"
                         >
                           {String(children).replace(/\n$/, '')}
                         </SyntaxHighlighter>
                       );
                     },
                     h2: ({ children }) => (
-                      <h2 className="text-lg font-semibold text-white mt-6 mb-3 border-b border-dark-200 pb-2">{children}</h2>
+                      <h2 className="text-lg font-semibold text-white mt-6 mb-3 border-b border-surface-200 pb-2">{children}</h2>
                     ),
                     h3: ({ children }) => (
                       <h3 className="text-base font-medium text-gray-200 mt-4 mb-2">{children}</h3>
@@ -331,7 +331,7 @@ export default function ChallengePage() {
                       <strong className="text-white font-semibold">{children}</strong>
                     ),
                     hr: () => (
-                      <hr className="border-dark-200 my-6" />
+                      <hr className="border-surface-200 my-6" />
                     ),
                   }}
                 >
@@ -351,7 +351,7 @@ export default function ChallengePage() {
             {prevChallenge ? (
               <Link
                 to={`/ctf/${id}/${prevChallenge.id}`}
-                className="flex-1 glass rounded-xl p-4 hover:bg-dark-200 transition-colors group"
+                className="flex-1 card-surface rounded-xl p-4 hover:bg-surface-200 transition-colors group"
               >
                 <div className="flex items-center gap-2 text-gray-400 text-sm mb-1">
                   <ChevronLeft size={16} />
@@ -368,7 +368,7 @@ export default function ChallengePage() {
             {nextChallenge ? (
               <Link
                 to={`/ctf/${id}/${nextChallenge.id}`}
-                className="flex-1 glass rounded-xl p-4 hover:bg-dark-200 transition-colors group text-right"
+                className="flex-1 card-surface rounded-xl p-4 hover:bg-surface-200 transition-colors group text-right"
               >
                 <div className="flex items-center justify-end gap-2 text-gray-400 text-sm mb-1">
                   <span>{t('challenge.next')}</span>
