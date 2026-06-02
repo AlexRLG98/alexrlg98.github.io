@@ -115,7 +115,7 @@ const translations: Record<Language, Record<string, unknown>> = {
       ongoing: 'Ongoing',
       viewDetails: 'View details',
       stats: {
-        machines: 'Rooted machines',
+        machines: 'Security Challenges Completed',
         flags: 'Flags',
         active: 'Active CTFs',
       },
@@ -266,7 +266,7 @@ const translations: Record<Language, Record<string, unknown>> = {
       ongoing: 'En cours',
       viewDetails: 'Voir les détails',
       stats: {
-        machines: 'Machines root',
+        machines: 'Security Challenges Complétés',
         flags: 'Flags',
         active: 'CTF actifs',
       },
