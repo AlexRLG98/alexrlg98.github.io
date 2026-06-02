@@ -66,7 +66,7 @@ export const skillCategories: SkillCategory[] = [
     name: { fr: 'Sécurité', en: 'Security' },
     icon: '🔐',
     skills: [
-      { name: 'CTF (Web/Crypto/PWN)', level: 70, category: 'security' },
+      { name: 'CTF (Web/Crypto/Binary Analysis)', level: 70, category: 'security' },
       { name: 'OSINT', level: 65, category: 'security' },
       { name: 'Reverse Engineering', level: 55, category: 'security' },
     ]
