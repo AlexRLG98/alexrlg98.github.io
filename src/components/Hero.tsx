@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Shield, Flag, Code2, Terminal, Trophy } from 'lucide-react';
+import { ChevronDown, Flag, Code2, Terminal, Trophy } from 'lucide-react';
 import { STATS } from '../data/constants';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -478,7 +478,6 @@ export default function Hero() {
 
   // ── Stats ──
   const stats = [
-    { value: 296, suffix: '', label: 'MITRE ATT&CK', icon: Shield, color: 'text-danger-400' },
     { value: STATS.ctfChallenges, suffix: '+', label: t('hero.stats.ctf'), icon: Flag, color: 'text-cyber-400' },
     { value: STATS.projects, suffix: '', label: t('hero.stats.projects'), icon: Code2, color: 'text-primary-400' },
     { value: STATS.languages, suffix: '+', label: t('hero.stats.languages'), icon: Terminal, color: 'text-accent-400' },
@@ -672,7 +671,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14 max-w-3xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-14 max-w-3xl mx-auto"
           >
             {stats.map((stat, i) => (
               <StatCounter
