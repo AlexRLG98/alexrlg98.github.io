@@ -367,8 +367,8 @@ export const bootToRoot: Competition[] = [
         en: '3600 points (1850 personal) - All machines (10/10) and flags (27/27) completed'
       },
       {
-        fr: 'Équipe First Blood (2 membres)',
-        en: 'Team First Blood (2 members)'
+        fr: 'Équipe Premier Solve (2 membres)',
+        en: 'Team Premier Solve (2 members)'
       }
     ],
     technologies: ['Chisel', 'SSH Tunneling', 'PwnKit', 'MongoDB', 'TeamCity', 'Burp Suite', 'nmap']
