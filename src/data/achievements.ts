@@ -339,8 +339,8 @@ export const bootToRoot: Competition[] = [
     title: 'Chisel - Advanced Security',
     platform: 'CTFd Epitech / TryHackMe',
     description: {
-      fr: '1ere place nationale Epitech. CTF organise sur CTFd avec machines boot2root hebergees sur TryHackMe. Exploitation de CVEs, pivoting reseau et privilege escalation.',
-      en: '1st place nationally at Epitech. CTF organized on CTFd with boot2root machines hosted on TryHackMe. CVE exploitation, network pivoting and privilege escalation.'
+      fr: '1ere place nationale Epitech. CTF organise sur CTFd avec machines vulnerables hebergees sur TryHackMe. Investigation CVE, pivoting reseau et privilege escalation.',
+      en: '1st place nationally at Epitech. CTF organized on CTFd with vulnerable machines hosted on TryHackMe. CVE investigation, network pivoting and privilege escalation.'
     },
     rank: '1/114',
     points: 3600,
