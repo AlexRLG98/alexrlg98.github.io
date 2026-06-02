@@ -47,8 +47,8 @@ export const ctfCompetitions: Competition[] = [
     title: 'European Cyber Cup 2026',
     platform: 'EC2 / Forum InCyber',
     description: {
-      fr: "6ème édition de la première compétition européenne de hacking éthique (format eSport), organisée par Forward Global au Forum InCyber, le plus grand événement cybersécurité d'Europe. 28 équipes par épreuve (14 pro + 14 étudiantes), 140 compétiteurs par épreuve, cash prize de 10 000 €.",
-      en: '6th edition of the first European ethical hacking competition (eSport format), organized by Forward Global at Forum InCyber, the largest cybersecurity event in Europe. 28 teams per event (14 pro + 14 student), 140 competitors per event, €10,000 cash prize.'
+      fr: "6ème édition de la première compétition européenne de cybersécurité (format eSport), organisée par Forward Global au Forum InCyber, le plus grand événement cybersécurité d'Europe. 28 équipes par épreuve (14 pro + 14 étudiantes), 140 compétiteurs par épreuve, cash prize de 10 000 €.",
+      en: '6th edition of the first European cybersecurity competition (eSport format), organized by Forward Global at Forum InCyber, the largest cybersecurity event in Europe. 28 teams per event (14 pro + 14 student), 140 competitors per event, €10,000 cash prize.'
     },
     rank: { fr: 'À venir', en: 'Upcoming' },
     year: 2026,

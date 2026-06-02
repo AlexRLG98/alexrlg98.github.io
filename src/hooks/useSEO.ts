@@ -12,18 +12,17 @@ interface SEOProps {
 }
 
 const BASE_URL = 'https://alexandre-mc.fr';
-const DEFAULT_IMAGE = `${BASE_URL}/og-image.png`;
 
 const defaultSEO = {
   fr: {
     title: 'Alexandre | Portfolio',
-    description: 'Développeur Full-Stack & Security Researcher. Étudiant TEK3 à Epitech Nice, passionné par la cybersécurité, l\'IA et les systèmes.',
-    keywords: ['développeur', 'full-stack', 'sécurité', 'cybersécurité', 'CTF', 'python', 'react', 'epitech', 'portfolio', 'monaco', 'nice'],
+    description: 'Développeur Full-Stack. Étudiant TEK3 à Epitech Nice, passionné par l\'IA et les systèmes.',
+    keywords: ['développeur', 'full-stack', 'python', 'react', 'epitech', 'portfolio', 'monaco', 'nice'],
   },
   en: {
     title: 'Alexandre | Portfolio',
-    description: 'Full-Stack Developer & Security Researcher. TEK3 student at Epitech Nice, passionate about cybersecurity, AI and systems.',
-    keywords: ['developer', 'full-stack', 'security', 'cybersecurity', 'CTF', 'python', 'react', 'epitech', 'portfolio', 'monaco', 'nice'],
+    description: 'Full-Stack Developer. TEK3 student at Epitech Nice, passionate about AI and systems.',
+    keywords: ['developer', 'full-stack', 'python', 'react', 'epitech', 'portfolio', 'monaco', 'nice'],
   },
 };
 
@@ -36,7 +35,7 @@ export function useSEO(props: SEOProps = {}) {
       title = defaults.title,
       description = defaults.description,
       keywords = defaults.keywords,
-      image = DEFAULT_IMAGE,
+      image,
       url = BASE_URL,
       type = 'website',
       noIndex = false,
@@ -68,17 +67,21 @@ export function useSEO(props: SEOProps = {}) {
     // Open Graph tags
     updateMeta('meta[property="og:title"]', title);
     updateMeta('meta[property="og:description"]', description);
-    updateMeta('meta[property="og:image"]', image);
+    if (image) {
+      updateMeta('meta[property="og:image"]', image);
+    }
     updateMeta('meta[property="og:url"]', url);
     updateMeta('meta[property="og:type"]', type);
     updateMeta('meta[property="og:site_name"]', 'Alexandre Portfolio');
     updateMeta('meta[property="og:locale"]', language === 'fr' ? 'fr_FR' : 'en_US');
 
     // Twitter Card tags
-    updateMeta('meta[name="twitter:card"]', 'summary_large_image');
+    updateMeta('meta[name="twitter:card"]', image ? 'summary_large_image' : 'summary');
     updateMeta('meta[name="twitter:title"]', title);
     updateMeta('meta[name="twitter:description"]', description);
-    updateMeta('meta[name="twitter:image"]', image);
+    if (image) {
+      updateMeta('meta[name="twitter:image"]', image);
+    }
 
     // Robots
     if (noIndex) {
@@ -108,14 +111,14 @@ export function useSEO(props: SEOProps = {}) {
 export const seoConfigs = {
   home: (lang: 'fr' | 'en') => ({
     title: lang === 'fr'
-      ? 'Alexandre | Développeur Full-Stack & Security Researcher'
-      : 'Alexandre | Full-Stack Developer & Security Researcher',
+      ? 'Alexandre | Développeur Full-Stack'
+      : 'Alexandre | Full-Stack Developer',
     description: lang === 'fr'
-      ? 'Portfolio d\'Alexandre - Développeur Full-Stack & Security Researcher. Étudiant TEK3 à Epitech Nice. Spécialisé en cybersécurité, CTF, React, Python et systèmes.'
-      : 'Alexandre\'s Portfolio - Full-Stack Developer & Security Researcher. TEK3 student at Epitech Nice. Specialized in cybersecurity, CTF, React, Python and systems.',
+      ? 'Portfolio d\'Alexandre - Développeur Full-Stack. Étudiant TEK3 à Epitech Nice. React, Python, systèmes.'
+      : 'Alexandre\'s Portfolio - Full-Stack Developer. TEK3 student at Epitech Nice. React, Python, systems.',
     keywords: lang === 'fr'
-      ? ['développeur full-stack', 'security researcher', 'epitech', 'CTF', 'cybersécurité', 'react', 'python', 'monaco', 'nice', 'portfolio']
-      : ['full-stack developer', 'security researcher', 'epitech', 'CTF', 'cybersecurity', 'react', 'python', 'monaco', 'nice', 'portfolio'],
+      ? ['développeur full-stack', 'epitech', 'react', 'python', 'monaco', 'nice', 'portfolio']
+      : ['full-stack developer', 'epitech', 'react', 'python', 'monaco', 'nice', 'portfolio'],
     url: BASE_URL,
   }),
 
@@ -128,8 +131,8 @@ export const seoConfigs = {
       title: `${competition.title} | Alexandre CTF`,
       description: desc,
       keywords: lang === 'fr'
-        ? ['CTF', 'writeup', competition.platform, 'cybersécurité', 'hacking', competition.title]
-        : ['CTF', 'writeup', competition.platform, 'cybersecurity', 'hacking', competition.title],
+        ? ['CTF', 'writeup', competition.platform, 'cybersécurité', competition.title]
+        : ['CTF', 'writeup', competition.platform, 'cybersecurity', competition.title],
       url: `${BASE_URL}/ctf/${competition.id}`,
       type: 'article' as const,
     };
