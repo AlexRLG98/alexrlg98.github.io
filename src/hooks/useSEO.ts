@@ -154,7 +154,7 @@ export const seoConfigs = {
       ? `Writeup de la machine ${machine.name} (${machine.difficulty}). OS: ${machine.os}. Techniques: ${machine.techniques.slice(0, 5).join(', ')}.`
       : `Writeup for ${machine.name} machine (${machine.difficulty}). OS: ${machine.os}. Techniques: ${machine.techniques.slice(0, 5).join(', ')}.`,
     keywords: ['Security Challenges', 'writeup', machine.difficulty, machine.os, ...machine.techniques.slice(0, 5), competitionTitle],
-    url: `${BASE_URL}/boot2root/${competitionId}/${machineId}`,
+    url: `${BASE_URL}/security-challenges/${competitionId}/${machineId}`,
     type: 'article' as const,
   }),
 };

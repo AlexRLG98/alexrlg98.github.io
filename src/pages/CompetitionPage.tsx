@@ -33,7 +33,7 @@ export default function CompetitionPage() {
   const hasEncryptedContent = challenges.some(c => c.encryptedContent);
   const STORAGE_KEY = `writeup_unlocked_${id}`;
 
-  // State pour le déverrouillage des machines (Boot2Root)
+  // State pour le déverrouillage des machines (Security Challenges)
   const [unlockedMachines, setUnlockedMachines] = useState<Set<string>>(new Set());
 
   // State pour le déverrouillage
@@ -401,7 +401,7 @@ export default function CompetitionPage() {
             </motion.div>
           )}
 
-          {/* Machines list for Boot2Root */}
+          {/* Machines list for Security Challenges */}
           {machines.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -437,7 +437,7 @@ export default function CompetitionPage() {
                   return (
                     <Link
                       key={machine.id}
-                      to={`/boot2root/${id}/${machine.id}`}
+                      to={`/security-challenges/${id}/${machine.id}`}
                     >
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}

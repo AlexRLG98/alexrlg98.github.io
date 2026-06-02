@@ -126,7 +126,7 @@ export default function MachinePage() {
             className="mb-8"
           >
             <Link
-              to={`/boot2root/${id}`}
+              to={`/security-challenges/${id}`}
               className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
             >
               <ArrowLeft size={20} />

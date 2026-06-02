@@ -27,7 +27,7 @@ const tierStyles = {
   standard: '',
 };
 
-function CompetitionCard({ competition, index, type }: { competition: Competition; index: number; type: 'ctf' | 'boot2root' }) {
+function CompetitionCard({ competition, index, type }: { competition: Competition; index: number; type: 'ctf' | 'security-challenges' }) {
   const { t, language } = useLanguage();
 
   const rankText = getLocalizedText(competition.rank, language);
@@ -207,7 +207,7 @@ export default function Achievements() {
           </h3>
           <div className="grid grid-cols-1 gap-4">
             {bootToRoot.map((comp, i) => (
-              <CompetitionCard key={comp.id} competition={comp} index={i} type="boot2root" />
+              <CompetitionCard key={comp.id} competition={comp} index={i} type="security-challenges" />
             ))}
           </div>
         </motion.div>
