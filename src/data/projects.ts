@@ -52,42 +52,6 @@ export const projects: Project[] = [
     year: 2028
   },
   {
-    id: 'autostrike',
-    title: 'AutoStrike',
-    description: {
-      fr: 'Plateforme de Breach and Attack Simulation (BAS) pour valider les défenses de sécurité via le framework MITRE ATT&CK Enterprise.',
-      en: 'Breach and Attack Simulation (BAS) platform to validate security defenses using the MITRE ATT&CK Enterprise framework.'
-    },
-    longDescription: {
-      fr: "Plateforme permettant de simuler des attaques réelles en production, valider l'efficacité des contrôles de sécurité (EDR, SIEM, Firewall), visualiser la couverture MITRE ATT&CK et automatiser les tests de sécurité de manière continue.",
-      en: "Platform for simulating real attacks in production, validating security control effectiveness (EDR, SIEM, Firewall), visualizing MITRE ATT&CK coverage and automating continuous security testing."
-    },
-    technologies: ['Go', 'Rust', 'React', 'TypeScript', 'Chart.js', 'TailwindCSS', 'SQLite', 'Docker', 'mTLS', 'WebSocket', 'MITRE ATT&CK'],
-    category: 'security',
-    type: 'personal',
-    featured: true,
-    metrics: [
-      { label: 'MITRE ATT&CK', value: '296' },
-      { label: { fr: 'Tactiques', en: 'Tactics' }, value: '13' },
-      { label: 'Tests', value: '2400+' },
-      { label: { fr: 'Exécuteurs', en: 'Executors' }, value: '1791' },
-    ],
-    highlights: [
-      { fr: '[EN COURS] Projet personnel', en: '[ONGOING] Personal project' },
-      { fr: 'Architecture hexagonale : Server Go + Agent Rust + Dashboard React', en: 'Hexagonal architecture: Go Server + Rust Agent + React Dashboard' },
-      { fr: 'Agent Rust multi-plateforme (Windows + Linux) avec beaconing et safe mode', en: 'Multi-platform Rust agent (Windows + Linux) with beaconing and safe mode' },
-      { fr: '296 techniques MITRE ATT&CK couvrant 13 tactiques, 1791 exécuteurs (220 safe / 74 unsafe)', en: '296 MITRE ATT&CK techniques covering 13 tactics, 1,791 executors (220 safe / 74 unsafe)' },
-      { fr: 'Authentification JWT avec 3 rôles (Admin, Operator, Viewer), rate limiting et token blacklist', en: 'JWT authentication with 3 roles (Admin, Operator, Viewer), rate limiting and token blacklist' },
-      { fr: 'Matrice ATT&CK interactive avec Security Score, analytics et comparaison de périodes', en: 'Interactive ATT&CK matrix with Security Score, analytics and period comparison' },
-      { fr: 'Communication sécurisée mTLS + WebSocket temps réel', en: 'Secure mTLS communication + real-time WebSocket' },
-      { fr: 'Scheduling automatisé (cron/daily/weekly/monthly) + notifications email/webhook', en: 'Automated scheduling (cron/daily/weekly/monthly) + email/webhook notifications' },
-      { fr: '2400+ tests (Go + Rust + React) avec couverture complète', en: '2400+ tests (Go + Rust + React) with full coverage' },
-      { fr: 'CI/CD complet (Jenkins, SonarCloud, Docker multi-stage, Trivy, SBOM)', en: 'Full CI/CD (Jenkins, SonarCloud, Docker multi-stage, Trivy, SBOM)' },
-      { fr: 'Alternative aux solutions BAS enterprise (Pentera, AttackIQ, SafeBreach), comparable à MITRE Caldera avec scoring, analytics et RBAC en plus', en: 'Alternative to enterprise BAS solutions (Pentera, AttackIQ, SafeBreach), comparable to MITRE Caldera with scoring, analytics and RBAC on top' }
-    ],
-    year: 2028
-  },
-  {
     id: 'living-world',
     title: 'Living World Ecosystem',
     description: {

@@ -176,7 +176,7 @@ function resolveCommand(input: string, lang: string): CmdResult | null {
       '',
       'Projets :',
       '  ls projets/     Lister les projets',
-      '  open <nom>      Ouvrir un projet (ex: open autostrike)',
+      '  open <nom>      Ouvrir un projet (ex: open erpio)',
       '',
       'Infos :',
       '  whoami          À propos de moi',
@@ -193,7 +193,7 @@ function resolveCommand(input: string, lang: string): CmdResult | null {
       '',
       'Projects:',
       '  ls projects/    List projects',
-      '  open <name>     Open a project (e.g. open autostrike)',
+      '  open <name>     Open a project (e.g. open erpio)',
       '',
       'Info:',
       '  whoami          About me',
@@ -219,13 +219,13 @@ function resolveCommand(input: string, lang: string): CmdResult | null {
 
   if (['ls projects/', 'ls projects', 'ls projets/', 'ls projets'].includes(lower)) {
     return { lines: [
-      'autostrike/    erpio/         rtype/',
-      'gomoku-ai/     living-world/  osint-tool/',
-      'my-ctf/        cryptobot/     sports-betting/',
-      'zappy/         raytracer/     plazza/',
-      'solarx/        whanos/        area/',
-      'arcade/        nanotekspice/  panoramix/',
-      'minilibc/      myhunter/      myradar/',
+      'erpio/         rtype/         gomoku-ai/',
+      'living-world/  osint-tool/    my-ctf/',
+      'cryptobot/     sports-betting/ zappy/',
+      'raytracer/     plazza/        solarx/',
+      'whanos/        area/          arcade/',
+      'nanotekspice/  panoramix/     minilibc/',
+      'myhunter/      myradar/',
     ] };
   }
 
@@ -409,7 +409,7 @@ export default function Hero() {
       const partial = userInput.toLowerCase();
       if (!partial) return;
       const projectSlugs = [
-        'autostrike', 'erpio', 'rtype', 'gomoku-ai', 'living-world',
+        'erpio', 'rtype', 'gomoku-ai', 'living-world',
         'osint-tool', 'my-ctf', 'cryptobot', 'sports-betting', 'zappy',
         'raytracer', 'plazza', 'solarx', 'whanos', 'area', 'arcade',
         'nanotekspice', 'panoramix', 'minilibc', 'myhunter', 'myradar',
@@ -598,7 +598,7 @@ export default function Hero() {
               {/* Hint — hidden on mobile where typing is less natural */}
               {scanComplete && commandHistory.length === 0 && !userInput && (
                 <div className="text-gray-600 text-[11px] mt-2 select-none hidden md:block">
-                  {language === 'fr' ? "Tapez 'help' — cd projets, cd ctf, open autostrike..." : "Type 'help' — cd projects, cd ctf, open autostrike..."}
+                  {language === 'fr' ? "Tapez 'help' — cd projets, cd ctf, open erpio..." : "Type 'help' — cd projects, cd ctf, open erpio..."}
                 </div>
               )}
             </div>

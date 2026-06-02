@@ -7,7 +7,7 @@ export const CONTACT = {
 } as const;
 
 export const STATS = {
-  projects: 21,
+  projects: 20,
   ctfChallenges: 85,
   languages: 9,
 } as const;
