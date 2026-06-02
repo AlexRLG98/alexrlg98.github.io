@@ -61,8 +61,8 @@ export const ctfCompetitions: Competition[] = [
     teamSize: 10,
     highlights: [
       {
-        fr: 'Social Engineering / OSINT (Sysdream) - Investigation et ingénierie sociale',
-        en: 'Social Engineering / OSINT (Sysdream) - Investigation and social engineering'
+        fr: 'OSINT (Sysdream) - Investigation et analyse de sources ouvertes',
+        en: 'OSINT (Sysdream) - Investigation and open source analysis'
       },
       {
         fr: 'CTF (Hack The Box / SANS Institute) - Challenges Capture The Flag',
