@@ -204,10 +204,10 @@ export const timeline: TimelineEntry[] = [
         period: { fr: '15 Sept. 2025 - 27 Fév. 2026', en: 'Sept. 15, 2025 - Feb. 27, 2026' },
         duration: { fr: '~6 mois (Jeu/Ven)', en: '~6 months (Thu/Fri)' },
         description: {
-          fr: 'Modélisation des chaînes d\'attaque cyber sur composants hospitaliers (MITRE ATT&CK, EBIOS RM, Egérie). Développement d\'outils PCA (supervision et provisionnement sécurisé).',
-          en: 'Cyber attack chain modeling on hospital components (MITRE ATT&CK, EBIOS RM, Egérie). PCA tools development (monitoring and secure provisioning).'
+          fr: "Évaluation des risques sécurité sur les systèmes hospitaliers selon les méthodologies EBIOS RM et Egérie. Développement d'outils de supervision et de continuité d'activité (PCA).",
+          en: 'Security risk assessment on hospital systems following EBIOS RM and Egérie methodologies. Development of monitoring and business continuity (PCA) tools.'
         },
-        highlights: ['MITRE ATT&CK', 'EBIOS RM', 'PCA'],
+        highlights: ['Risk Assessment', 'EBIOS RM', 'PCA'],
         startDate: '2025-09-15',
         endDate: '2026-02-27'
       }
