@@ -69,7 +69,7 @@ function StatCounter({ value, suffix, label, icon: Icon, color, inView, delay }:
 function Prompt({ text }: { text?: string }) {
   return (
     <>
-      <span className="text-danger-400">root@kali</span>
+      <span className="text-cyber-400">alexandre@workstation</span>
       <span className="text-gray-500">:</span>
       <span className="text-primary-400">~</span>
       <span className="text-gray-500">$ </span>
@@ -232,12 +232,12 @@ function resolveCommand(input: string, lang: string): CmdResult | null {
   if (lower === 'cat stack' || lower === 'cat skills') {
     return { lines: lang === 'fr' ? [
       'Langages:  C/C++ · Python · Go · Rust · TypeScript',
-      'Sécurité:  BAS · MITRE ATT&CK · OSINT · CTF',
+      'Sécurité:  Defensive · OSINT · CTF · Reverse Engineering',
       'Backend:   FastAPI · Node.js · PostgreSQL',
       'DevOps:    Docker · Git · CI/CD · CMake',
     ] : [
       'Languages: C/C++ · Python · Go · Rust · TypeScript',
-      'Security:  BAS · MITRE ATT&CK · OSINT · CTF',
+      'Security:  Defensive · OSINT · CTF · Reverse Engineering',
       'Backend:   FastAPI · Node.js · PostgreSQL',
       'DevOps:    Docker · Git · CI/CD · CMake',
     ] };
@@ -311,27 +311,27 @@ export default function Hero() {
     setRoleIndex(0);
   }, [t]);
 
-  // ── Terminal: nmap scan lines ──
+  // ── Terminal: HTTP probe lines ──
   const terminalLines: { type: LineType; text: string }[] = useMemo(() => language === 'fr' ? [
-    { type: 'cmd', text: 'nmap -sV --script=ctf-recon alexandre.mc' },
-    { type: 'info', text: 'Scanning alexandre.mc [6 services]...' },
-    { type: 'result', text: '22/tcp    open   ssh        Epitech Nice \u00b7 TEK3' },
-    { type: 'result', text: '80/tcp    open   http       Go, Rust, C++, Python, TS' },
-    { type: 'result', text: '443/tcp   open   https      BAS \u00b7 MITRE ATT&CK \u00b7 Pentest' },
-    { type: 'result', text: '8080/tcp  open   http-alt   AutoStrike \u00b7 296 techniques' },
+    { type: 'cmd', text: 'curl -sv https://alexandre.mc | head' },
+    { type: 'info', text: 'HTTP/2 200' },
+    { type: 'result', text: 'server:    Epitech Nice \u00b7 TEK3' },
+    { type: 'result', text: 'languages: Go, Rust, C++, Python, TS' },
+    { type: 'result', text: 'focus:     Defensive Security \u00b7 Data Engineering \u00b7 Full-Stack' },
+    { type: 'result', text: 'projects:  20 majeurs \u00b7 9+ langages' },
     { type: 'divider', text: '' },
-    { type: 'highlight', text: 'CTF: 1er/114 Chisel \u00b7 11e/1014 HTB \u{1F30D} \u00b7 6e/762 Scarlet \u{1F30D}' },
-    { type: 'status', text: 'Scan termin\u00e9: 0 vuln\u00e9rabilit\u00e9 \u00b7 portfolio op\u00e9rationnel' },
+    { type: 'highlight', text: 'ctf: 1er/114 Chisel \u00b7 11e/1014 HTB \u{1F30D} \u00b7 6e/762 Scarlet \u{1F30D}' },
+    { type: 'status', text: 'status: portfolio op\u00e9rationnel' },
   ] : [
-    { type: 'cmd', text: 'nmap -sV --script=ctf-recon alexandre.mc' },
-    { type: 'info', text: 'Scanning alexandre.mc [6 services]...' },
-    { type: 'result', text: '22/tcp    open   ssh        Epitech Nice \u00b7 TEK3' },
-    { type: 'result', text: '80/tcp    open   http       Go, Rust, C++, Python, TS' },
-    { type: 'result', text: '443/tcp   open   https      BAS \u00b7 MITRE ATT&CK \u00b7 Pentest' },
-    { type: 'result', text: '8080/tcp  open   http-alt   AutoStrike \u00b7 296 techniques' },
+    { type: 'cmd', text: 'curl -sv https://alexandre.mc | head' },
+    { type: 'info', text: 'HTTP/2 200' },
+    { type: 'result', text: 'server:    Epitech Nice \u00b7 TEK3' },
+    { type: 'result', text: 'languages: Go, Rust, C++, Python, TS' },
+    { type: 'result', text: 'focus:     Defensive Security \u00b7 Data Engineering \u00b7 Full-Stack' },
+    { type: 'result', text: 'projects:  20 majors \u00b7 9+ languages' },
     { type: 'divider', text: '' },
-    { type: 'highlight', text: 'CTF: 1st/114 Chisel \u00b7 11th/1014 HTB \u{1F30D} \u00b7 6th/762 Scarlet \u{1F30D}' },
-    { type: 'status', text: 'Scan complete: 0 vulnerabilities \u00b7 portfolio operational' },
+    { type: 'highlight', text: 'ctf: 1st/114 Chisel \u00b7 11th/1014 HTB \u{1F30D} \u00b7 6th/762 Scarlet \u{1F30D}' },
+    { type: 'status', text: 'status: portfolio operational' },
   ], [language]);
 
   const visibleLines = useTerminalReveal(terminalLines.length);
@@ -559,7 +559,7 @@ export default function Hero() {
               <span className="terminal-dot red"></span>
               <span className="terminal-dot yellow"></span>
               <span className="terminal-dot green"></span>
-              <span className="ml-3 text-xs text-gray-500 font-mono">alexandre@kali ~</span>
+              <span className="ml-3 text-xs text-gray-500 font-mono">alexandre@workstation ~</span>
             </div>
             <div
               ref={terminalContentRef}
