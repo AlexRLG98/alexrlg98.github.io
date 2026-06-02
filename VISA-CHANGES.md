@@ -14,13 +14,15 @@ tag `pre-visa-edit`.
 |---|---|---|
 | `main` (before edits) | `14152d9ddf28d0b2c6bdb69f997a92a1cfe42b28` | Last commit on `main` before the visa-ready branch was cut |
 | Tag `pre-visa-edit` | `a97e1da970019d2af7eae2926c7c5432fcd8f7aa` | Annotated tag object pointing at the above commit. Pushed to `origin`. |
-| `visa-ready` HEAD | `2c15574` | Last commit on this branch (refresh after Option 3 routing rename) |
+| `visa-ready` HEAD | `a9fefaf` | Last content commit on this branch (after final Social Engineering cleanup) |
 
 Snapshot taken on **2026-06-02**.
 
 ## Forward-only commits on `visa-ready`
 
 ```
+a9fefaf refactor(content): drop residual Social Engineering highlight on EC2 2026
+616f6f6 docs(visa): update VISA-CHANGES with the URL rename commit (2c15574)
 2c15574 refactor(routing): rename /boot2root/ URLs to /security-challenges/
 94f8109 docs(visa): add VISA-CHANGES.md rollback runbook
 08f43e0 refactor(content): clean visible boot2root and exploitation wording in Chisel description
@@ -143,6 +145,17 @@ at tag `pre-visa-edit`.
   "compétition européenne de hacking éthique" / "European ethical
   hacking competition" to "compétition européenne de cybersécurité"
   / "European cybersecurity competition".
+
+### Residual Social Engineering highlight (commit `a9fefaf`)
+
+A browser-based regression scan on `/ctf/ec2-2026` (vite preview)
+surfaced one remaining occurrence: the European Cyber Cup 2026
+highlights still contained "Social Engineering / OSINT (Sysdream) -
+Investigation et ingénierie sociale" / "Investigation and social
+engineering". The earlier 3.C commit only updated the `technologies`
+tags, not this `highlights` entry. The line was rewritten to "OSINT
+(Sysdream) - Investigation et analyse de sources ouvertes" /
+"Investigation and open source analysis".
 
 ### URL rename (commit `2c15574`)
 
