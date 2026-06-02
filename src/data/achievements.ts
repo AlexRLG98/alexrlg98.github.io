@@ -69,8 +69,8 @@ export const ctfCompetitions: Competition[] = [
         en: 'CTF (Hack The Box / SANS Institute) - Capture The Flag challenges'
       },
       {
-        fr: 'Purple Ninja (Immersive Labs) - Red Team / Blue Team simultané',
-        en: 'Purple Ninja (Immersive Labs) - Simultaneous Red Team / Blue Team'
+        fr: 'Purple Ninja (Immersive Labs) - Defensive + Offensive Security simultanés',
+        en: 'Purple Ninja (Immersive Labs) - Simultaneous Defensive + Offensive Security'
       },
       {
         fr: 'CTF / IA (Airbus & Google) - Challenges CTF avec composante IA',
@@ -85,7 +85,7 @@ export const ctfCompetitions: Competition[] = [
         en: 'Floating roster of 10 players, 5 max per event based on specialties - On-site BYOD at Lille Grand Palais'
       }
     ],
-    technologies: ['OSINT', 'Social Engineering', 'CTF', 'Red Team', 'Blue Team', 'Forensics', 'AI']
+    technologies: ['OSINT', 'CTF', 'Security Exercise', 'Defense Strategy', 'Forensics', 'AI']
   },
   {
     id: 'hackday-2026-qualifications',
