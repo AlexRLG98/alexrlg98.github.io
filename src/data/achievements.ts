@@ -349,7 +349,7 @@ export const bootToRoot: Competition[] = [
     period: 'TEK3',
     status: 'completed',
     date: '17 Nov - 7 Dec 2025',
-    team: 'First Blood',
+    team: 'Premier Solve',
     teamSize: 2,
     challenges: '10/10',
     flags: '27/27',

@@ -169,7 +169,7 @@ const translations: Record<Language, Record<string, unknown>> = {
       summary: 'Summary',
       previous: 'Previous',
       next: 'Next',
-      teamFirstBlood: 'Team First Blood',
+      teamFirstBlood: 'First Solve',
       day: 'Day',
     },
     machine: {
