@@ -239,7 +239,7 @@ export default function CompetitionPage() {
                 {competition.platform}
               </span>
               <span className="px-3 py-1 rounded-full text-sm bg-primary-500/20 text-primary-400 border border-primary-500/30">
-                {isBootToRoot ? 'Boot2Root' : 'CTF Jeopardy'}
+                {isBootToRoot ? 'Security Challenges' : 'CTF Jeopardy'}
               </span>
             </div>
 

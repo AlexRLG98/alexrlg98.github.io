@@ -146,11 +146,11 @@ export const seoConfigs = {
   }),
 
   machine: (machine: { name: string; difficulty: string; techniques: string[]; os: string }, competitionTitle: string, competitionId: string, machineId: string, lang: 'fr' | 'en') => ({
-    title: `${machine.name} - ${competitionTitle} | Alexandre Boot2Root`,
+    title: `${machine.name} - ${competitionTitle} | Alexandre Security Challenges`,
     description: lang === 'fr'
       ? `Writeup de la machine ${machine.name} (${machine.difficulty}). OS: ${machine.os}. Techniques: ${machine.techniques.slice(0, 5).join(', ')}.`
       : `Writeup for ${machine.name} machine (${machine.difficulty}). OS: ${machine.os}. Techniques: ${machine.techniques.slice(0, 5).join(', ')}.`,
-    keywords: ['Boot2Root', 'writeup', machine.difficulty, machine.os, ...machine.techniques.slice(0, 5), competitionTitle],
+    keywords: ['Security Challenges', 'writeup', machine.difficulty, machine.os, ...machine.techniques.slice(0, 5), competitionTitle],
     url: `${BASE_URL}/boot2root/${competitionId}/${machineId}`,
     type: 'article' as const,
   }),

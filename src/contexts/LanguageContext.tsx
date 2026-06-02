@@ -110,7 +110,7 @@ const translations: Record<Language, Record<string, unknown>> = {
     },
     achievements: {
       title: 'CTF & Challenges',
-      subtitle: 'Cybersecurity competitions and boot2root challenges',
+      subtitle: 'Cybersecurity competitions and security challenges',
       upcoming: 'Upcoming',
       ongoing: 'Ongoing',
       viewDetails: 'View details',
@@ -261,7 +261,7 @@ const translations: Record<Language, Record<string, unknown>> = {
     },
     achievements: {
       title: 'CTF & Challenges',
-      subtitle: 'Compétitions de cybersécurité et challenges boot2root',
+      subtitle: 'Compétitions de cybersécurité et challenges de sécurité',
       upcoming: 'À venir',
       ongoing: 'En cours',
       viewDetails: 'Voir les détails',

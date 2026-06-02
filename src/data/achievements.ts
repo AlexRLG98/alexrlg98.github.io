@@ -332,7 +332,7 @@ export const ctfCompetitions: Competition[] = [
   }
 ];
 
-// Boot2Root / Machine challenges
+// Security Challenges / Machine challenges
 export const bootToRoot: Competition[] = [
   {
     id: 'chisel',
