@@ -156,10 +156,10 @@ export const timeline: TimelineEntry[] = [
       title: 'UCLA Extension',
       subtitle: 'Los Angeles, California',
       description: {
-        fr: "Année internationale à UCLA Extension. Double certification en Data Analytics et Cybersecurity. Python, R, Tableau, Big Data, Hadoop, sécurité des infrastructures.",
-        en: 'International year at UCLA Extension. Dual certification in Data Analytics and Cybersecurity. Python, R, Tableau, Big Data, Hadoop, infrastructure security.'
+        fr: "Année internationale à UCLA Extension. Certificat en Data Modeling, Warehousing and Database Administration, avec concentration en Data Science et Cybersecurity. Python, SQL, Big Data, analyse de données.",
+        en: 'International year at UCLA Extension. Certificate in Data Modeling, Warehousing and Database Administration, with concentration in Data Science and Cybersecurity. Python, SQL, Big Data, data analysis.'
       },
-      highlights: ['Data Analytics', 'Cybersecurity', 'Python', 'Big Data', 'UCLA'],
+      highlights: ['Data Modeling', 'Data Science', 'SQL', 'Big Data', 'UCLA'],
       startDate: '2026-09-15',
       endDate: '2027-06-15'
     }
