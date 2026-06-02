@@ -14,13 +14,15 @@ tag `pre-visa-edit`.
 |---|---|---|
 | `main` (before edits) | `14152d9ddf28d0b2c6bdb69f997a92a1cfe42b28` | Last commit on `main` before the visa-ready branch was cut |
 | Tag `pre-visa-edit` | `a97e1da970019d2af7eae2926c7c5432fcd8f7aa` | Annotated tag object pointing at the above commit. Pushed to `origin`. |
-| `visa-ready` HEAD | `08f43e03157b69e66d2a1898bb648f6e62b95002` | Last commit on this branch |
+| `visa-ready` HEAD | `2c15574` | Last commit on this branch (refresh after Option 3 routing rename) |
 
 Snapshot taken on **2026-06-02**.
 
 ## Forward-only commits on `visa-ready`
 
 ```
+2c15574 refactor(routing): rename /boot2root/ URLs to /security-challenges/
+94f8109 docs(visa): add VISA-CHANGES.md rollback runbook
 08f43e0 refactor(content): clean visible boot2root and exploitation wording in Chisel description
 27fcab0 refactor(seo): clean meta tags and remove problematic OG image
 40335a9 refactor(ui): drop AutoStrike-related MITRE ATT&CK 296 stat from Hero
@@ -142,6 +144,35 @@ at tag `pre-visa-edit`.
   hacking competition" to "compétition européenne de cybersécurité"
   / "European cybersecurity competition".
 
+### URL rename (commit `2c15574`)
+
+The user-facing URLs that exposed the word "boot2root" were renamed:
+
+- `src/App.tsx` — Routes `/boot2root/:id` and `/boot2root/:id/:machineId`
+  became `/security-challenges/:id` and
+  `/security-challenges/:id/:machineId`. A `LegacyBoot2RootRedirect`
+  catch-all route at `/boot2root/*` performs a client-side
+  `Navigate(replace=true)` to the equivalent `/security-challenges/*`
+  path so all existing inbound links keep working.
+- `src/components/Achievements.tsx` — The `CompetitionCard` prop type
+  changed from `'ctf' | 'boot2root'` to `'ctf' | 'security-challenges'`
+  and the call site was updated.
+- `src/pages/MachinePage.tsx`, `src/pages/CompetitionPage.tsx` — The
+  hardcoded `to={`/boot2root/...`}` links and the 2 surrounding code
+  comments were renamed to `/security-challenges/`.
+- `src/hooks/useSEO.ts` — The `seoConfigs.machine` `url` field was
+  switched to `/security-challenges/`.
+- `public/sitemap.xml` — All 11 boot2root entries (1 competition + 10
+  machines) and the 2 surrounding comments now point to
+  `/security-challenges/`.
+- `public/robots.txt` — Added `Disallow: /boot2root/` so crawlers
+  stop indexing the legacy path during the redirect propagation
+  window.
+
+The original URL paths remain reachable via the legacy redirect, so
+existing inbound links still resolve. Google will progressively
+update its index to the new paths.
+
 ### Chisel CTF description (commit `08f43e0`)
 
 The public Chisel description rendered on `/boot2root/chisel`
@@ -164,9 +195,10 @@ paths and sitemap entries are unchanged.
   PentesterLab is a real sponsor company of the Jeanne d'Hack CTF.
 - The Chisel CTF "Investigation CVE, pivoting reseau et privilege
   escalation" tail. These are standard academic security terms.
-- URL routes `/boot2root/:id` and `/boot2root/:id/:machineId` in
+- ~~URL routes `/boot2root/:id` and `/boot2root/:id/:machineId` in
   `src/App.tsx`, plus the corresponding sitemap entries and SEO
-  `url` strings. Kept to preserve SEO and existing inbound links.
+  `url` strings.~~ Updated in commit `2c15574` — see Section "URL
+  rename" below.
 
 ## How to roll back after the visa interview
 
